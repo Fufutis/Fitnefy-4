@@ -34,7 +34,16 @@ h1 {
     display: flex;
     height: 100vh;
   }
-  
+  .content {
+    position: absolute; /* change from static to absolute */
+    left: 6%; /* position to the right of the sidebar */
+    right: 0; /* stretch to the right edge of the screen */
+    top: 0;
+    bottom: 0;
+    background-color: rgb(28, 28, 32);
+    transition: width 3s ease-in-out;
+    overflow: hidden;
+  }
   .sidebar {
     position: absolute; /* Change from fixed to absolute */
     width: 6%;
@@ -48,7 +57,16 @@ h1 {
     padding: 20px;
     left: 0; /* Add this property to position the sidebar on the left */
   }
-  
+
+   .sidebar:hover {
+    width: 15%; /* increase the width */
+    transform: translateX(0);
+  }
+
+  .sidebar:hover + .content {
+    margin-left: 9%; /* Change 15% to the width of your expanded sidebar */
+    transition: width 1s ease-in-out;
+  }
   .btn {
     /* ... other styles ... */
     display: block;
@@ -56,26 +74,9 @@ h1 {
     margin-bottom: 20px;
   }
   
-  .sidebar:hover {
-    width: 15%; /* increase the width */
-    transform: translateX(0);
-  }
   
-  .content {
-    position: absolute; /* change from static to absolute */
-    left: 6%; /* position to the right of the sidebar */
-    right: 0; /* stretch to the right edge of the screen */
-    top: 0;
-    bottom: 0;
-    background-color: rgb(28, 28, 32);
-    transition: width 3s ease-in-out;
-    overflow: hidden;
-  }
   
-  .sidebar:hover + .content {
-    margin-left: 9%; /* Change 15% to the width of your expanded sidebar */
-    transition: width 1s ease-in-out;
-  }
+  
   
   h1 {
     margin: 0;
