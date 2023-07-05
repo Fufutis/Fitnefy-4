@@ -1,180 +1,175 @@
 h1 {
-    color: rgb(214, 157, 0);
-  }
-  
-  p {
-    font-size: 2.1vh;
-    color: aliceblue;
-  }
-  
-  button {
-    background-color: rgb(214, 157, 0);
-    color: rgb(35, 35, 43);
-    font-size: 2vh;
-    font-weight: bolder;
-    height: 8%;
-    border: pink;
-    border-radius: 4px;
-    cursor: crosshair;
-    display: block;
-    width: 100%;
-  }
-  
-  * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0;
-  }
-  /* make the sidebar come out smoothly */
-  
-  
-  .wrapper {
-    display: flex;
-    height: 100vh;
-  }
-  .content {
-    position: absolute; /* change from static to absolute */
-    left: 6%; /* position to the right of the sidebar */
-    right: 0; /* stretch to the right edge of the screen */
-    top: 0;
-    bottom: 0;
-    background-color: rgb(28, 28, 32);
-    transition: width 3s ease-in-out;
-    overflow: hidden;
-  }
-  .sidebar {
-    position: absolute; /* Change from fixed to absolute */
-    width: 6%;
-    height: 100%;
-    background-color: rgb(35, 35, 43);
-    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    justify-content: top;
-    align-items: center;
-    padding: 20px;
-    left: 0; /* Add this property to position the sidebar on the left */
-  }
+  color: rgb(214, 157, 0);
+}
 
-   .sidebar:hover {
-    width: 15%; /* increase the width */
-    transform: translateX(0);
-  }
+p {
+  font-size: 2.1vh;
+  color: aliceblue;
+}
 
-  .sidebar:hover + .content {
-    margin-left: 9%; /* Change 15% to the width of your expanded sidebar */
-    transition: width 1s ease-in-out;
-  }
-  .btn {
-    /* ... other styles ... */
-    display: block;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  
-  
-  
-  
-  h1 {
-    margin: 0;
-    padding: 20px;
-  }
-  
-  p {
-    padding: 20px;
-  }
-  
-  #counter {
-    color: aliceblue;
-    font-size: x-large;
-    font-weight: bold;
-  }
-  
-  .block {
-    color: rgb(0, 0, 0);
-    display: block;
-    background-color: rgb(214, 157, 0);
-    padding-left: 10%;
-    padding-right: 10%;
-    border-radius: 6px;
-    padding-bottom: 1%;
-    padding-top: 0%;
-    margin-bottom: 2.5vh;
-  }
-  
-  #settings {
-    font-size: 1.8vh;
-    padding-left: 5%;
-    position: absolute;
-    bottom: 5%;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 2fr);
-    grid-gap: 20px;
-    margin: 20px;
-  }
-  
-  .item {
-    background-color: #333333;
-    padding: 120px;
-    text-align: center;
-    font-size: 4vh;
-    font-weight: bolder;
-    color: rgb(214, 157, 0);
-  }
-  
-  
+button {
+  background-color: rgb(214, 157, 0);
+  color: rgb(35, 35, 43);
+  font-size: 2vh;
+  font-weight: bolder;
+  height: 8%;
+  border: pink;
+  border-radius: 4px;
+  cursor: crosshair;
+  display: block;
+  width: 100%;
+}
 
-  .progress-1 {
-    width:360px;
-    height:55px;
-    border-radius: 20px;
-    color:rgb(214, 157, 0);
-    border:2px solid;
-    position: relative;
-    top: 75px;
-  }
- /*
-  .progress-1::before {
-    content:"";
-    position: absolute;
-    margin:2px;
-    inset:0 100% 0 0;
-    border-radius: inherit;
-    background:currentColor;
-    animation:p1 2s; }  
-  */ 
- /* @keyframes p1 {
-      100% {inset:0}
-  } whole page does a slide good for future*/ 
-  .progress-6 {
-    width:360px;
-    height:55px;
-    border-radius: 20px;
-    color:rgb(214, 157, 0);
-    border:2px solid;
-    position: relative;
-    top: 75px;
-  }
-  .progress-6::before {
-    content:"";
-    position: absolute;
-    margin:2px;
-    inset:0 100% 0 0;
-    border-radius: inherit;
-    background:currentColor;
-    animation:p6 2s; /*;*/
-  }
-  @keyframes p6 {
-      100% {inset:0}
-  }
-  
-  
-  
-  
-  
-  
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color:  gray;   /* rgb(28, 28, 32);*/
+}
+/* make the sidebar come out smoothly */
+
+
+.wrapper {
+  display: flex;
+  height: 100vh;
+}
+.content {
+  box-sizing: border-box;
+  position: absolute;
+  left: 6%;
+  right: 0; /* Adjust the right value to match the width of the sidebar */
+  top: 0;
+  bottom: 0;
+  background-color: rgb(28, 28, 32);
+  transition: transform 0.3s ease-in-out;
+  overflow: hidden;
+}
+.sidebar {
+  box-sizing: border-box;
+  position: absolute; /* Change from fixed to absolute */
+  width: 6%;
+  height: 100%;
+  background-color: rgb(35, 35, 43);
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  padding: 20px;
+  left: 0; /* Add this property to position the sidebar on the left */
+}
+
+ .sidebar:hover {
+  width: 11.7%; /* increase the width */
+  transform: translateX(0);
+}
+
+.sidebar:hover + .content {
+  transform: translateX(6%);
+  transition: transform 0.3s ease-in-out;
+}
+.btn {
+  /* ... other styles ... */
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0;
+  padding: 20px;
+}
+
+p {
+  padding: 20px;
+}
+
+#counter {
+  color: aliceblue;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.block {
+  color: rgb(0, 0, 0);
+  display: block;
+  background-color: rgb(214, 157, 0);
+  padding-left: 10%;
+  padding-right: 10%;
+  border-radius: 6px;
+  padding-bottom: 1%;
+  padding-top: 0%;
+  margin-bottom: 2.5vh;
+}
+
+#settings {
+  font-size: 1.8vh;
+  padding-left: 5%;
+  position: absolute;
+  bottom: 5%;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+  grid-gap: 20px;
+  margin: 20px;
+}
+
+.sidebar:hover + .content .grid {
+  grid-template-columns: repeat(3, 2fr);
+}
+
+.item {
+  background-color: #333333;
+  padding: 120px;
+  text-align: center;
+  font-size: 4vh;
+  font-weight: bolder;
+  color: rgb(214, 157, 0);
+}
+
+.progress-1 {
+  width:360px;
+  height:55px;
+  border-radius: 20px;
+  color:rgb(214, 157, 0);
+  border:2px solid;
+  position: relative;
+  top: 75px;
+}
+/*
+.progress-1::before {
+  content:"";
+  position: absolute;
+  margin:2px;
+  inset:0 100% 0 0;
+  border-radius: inherit;
+  background:currentColor;
+  animation:p1 2s; }  
+*/ 
+/* @keyframes p1 {
+    100% {inset:0}
+} whole page does a slide good for future*/ 
+.progress-6 {
+  width:360px;
+  height:55px;
+  border-radius: 20px;
+  color:rgb(214, 157, 0);
+  border:2px solid;
+  position: relative;
+  top: 75px;
+}
+.progress-6::before {
+  content:"";
+  position: absolute;
+  margin:2px;
+  inset:0 100% 0 0;
+  border-radius: inherit;
+  background:currentColor;
+  animation:p6 2s; /*;*/
+}
+@keyframes p6 {
+    100% {inset:0}
+}
