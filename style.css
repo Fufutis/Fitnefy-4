@@ -148,4 +148,11 @@ p {
   border:2px solid;
   position: relative;
   top: 50px;
+  background:
+  linear-gradient(orange 0 0) 0/0% no-repeat
+  rgb(35, 35, 43);;
+ animation: l2 12s infinite steps(8);
+}
+@keyframes l2 {
+   100% {background-size: 120%}
 }
