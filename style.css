@@ -158,11 +158,17 @@ p {
 @keyframes l2 {
    100% {background-size: 120%}
 }
-.add{
+.action_btn {
+  margin-left:5vh;
+  margin-right:6vh;
   margin-top: 8vh;
   background-color: rgb(214, 157, 0);
-}
-.subtract{
-
-  background-color: rgb(214, 157, 0);
+  color: rgb(35, 35, 43);
+  font-size: 3vh;
+  font-weight: bolder;
+  border-radius: 1vh;
+  display: block;
+  width: 6.7vh;
+  height: 5.7vh;
+  display: inline;
 }
