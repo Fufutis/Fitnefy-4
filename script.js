@@ -9,24 +9,30 @@ function changeText() {
     document.querySelector("p").innerHTML = "You are now level " + (number+1) + " continue improving";
 }
 
+function moveadd() {
+  var elem = document.getElementById("myBar");
+  var width = 1;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width++;
+      elem.style.width = width + '%';
+    }
+  }
+}
 
-document.addEventListener("DOMContentLoaded", function () {
-    // Select all elements with the class 'progress-1'
-    const progressBars = document.querySelectorAll(".progress-1");
-  
-    // Loop through each progress bar element
-    progressBars.forEach((progressBar) => {
-      const filledBlocks = parseInt(progressBar.getAttribute("data-filled"));
-  
-      // Create and insert the block items based on the data-filled attribute
-      for (let i = 0; i < 10; i++) {
-        const blockItem = document.createElement("div");
-        blockItem.classList.add("block-item");
-        if (i < filledBlocks) {
-          blockItem.classList.add("filled");
-        }
-        progressBar.appendChild(blockItem);
-      }
-    });
-  });
-  
+function movesub() {
+  var elem = document.getElementById("myBar");
+  var width = 1;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width++;
+      elem.style.width = width + '%';
+    }
+  }
+}

@@ -12,7 +12,7 @@
 <body>
     <div class="wrapper">
         <div class="sidebar">
-            <button onclick="changeText(),increment()">Fitnefy</button>
+            <button class="logo" onclick="changeText(),increment()">Fitnefy</button>
             <h1>Level</h1>
             <div id="counter">0</div>
             <h2 class="block">Profile</h2>
@@ -30,27 +30,39 @@
                     <div class="item">
                         Strength
                         <div class="progress-1"></div>
+                        <button class="add" onclick="moveadd()">+</button>
+                        <button class="subtract" onclick="movesub()">-</button>
                     </div>
                     <div class="item">Dexterity
                         <div class="progress-1" data-filled="2">
-                            <div class="block-item"></div> <!-- So goal 1 is to make the div to add themselves -->
-                            <div class="block-item"></div><!-- Goal 2 having different options -->
-                            <div class="block-item"></div><!-- a way to overlap your max like ng+ -->
+                            <!--<div class="block-item"></div>  So goal 1 is to make the div to add themselves 
+                            <div class="block-item"></div> Goal 2 having different options 
+                            <div class="block-item"></div>a way to overlap your max like ng+ 
                             <div class="block-item"></div>
-                            <div class="block-item"></div>
+                            <div class="block-item"></div>-->
                         </div>
+                        <button class="add" onclick="moveadd()">+</button>
+                        <button class="subtract" onclick="movesub()">-</button>
                     </div>
                     <div class="item">Intelligence
                         <div class="progress-1"></div>
+                        <button class="add" onclick="moveadd()">+</button>
+                        <button class="subtract" onclick="movesub()">-</button>
                     </div>
                     <div class="item">Perception
                         <div class="progress-1"></div>
+                        <button class="add" onclick="moveadd()">+</button>
+                        <button class="subtract" onclick="movesub()">-</button>
                     </div>
                     <div class="item">Endurance
                         <div class="progress-1"></div>
+                        <button class="add" onclick="moveadd()">+</button>
+                        <button class="subtract" onclick="movesub()">-</button>
                     </div>
                     <div class="item">Luck
                         <div class="progress-1"></div>
+                        <button class="add" onclick="moveadd()">+</button>
+                        <button class="subtract" onclick="movesub()">-</button>
                     </div>
                 </div>
             </div>

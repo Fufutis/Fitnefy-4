@@ -7,7 +7,7 @@ p {
   color: aliceblue;
 }
 
-button {
+.logo {
   background-color: rgb(214, 157, 0);
   color: rgb(35, 35, 43);
   font-size: 2vh;
@@ -134,6 +134,8 @@ p {
 .item {
   background-color: #333333;
   padding: 10.7vh;
+  padding-bottom: 3vh;
+  padding-top: 8vh;
   text-align: center;
   font-size: 4vh;
   font-weight: bolder;
@@ -155,4 +157,12 @@ p {
 }
 @keyframes l2 {
    100% {background-size: 120%}
+}
+.add{
+  margin-top: 8vh;
+  background-color: rgb(214, 157, 0);
+}
+.subtract{
+
+  background-color: rgb(214, 157, 0);
 }
