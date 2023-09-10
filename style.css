@@ -153,11 +153,11 @@ p {
   background:
   linear-gradient(orange 0 0) 0/0% no-repeat
   rgb(35, 35, 43);;
- animation: l2 12s infinite steps(8);
+ /*animation: l2 12s infinite steps(8);*/
 }
-@keyframes l2 {
+/*@keyframes l2 {
    100% {background-size: 120%}
-}
+}*/
 .action_btn {
   margin-left:5vh;
   margin-right:6vh;

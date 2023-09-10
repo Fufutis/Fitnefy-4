@@ -8,14 +8,26 @@ function increment() {
 function changeText() {
     document.querySelector("p").innerHTML = "You are now level " + (number+1) + " continue improving";
 }
-
-var width = 10; // Initial width
+var filled = 0; // Initial fill percentage
 
 function moveadd() {
-  var elem = document.getElementById("myBar");   
-  if (width < 100) {/* OK SO YOU GOT IT WORKING JUST LATER MAKE IT SO THE THING INSIDE OF THE BAR CHANGES AND NOT THE BAR IT  SELF*/
-    width += 10; // Increase by 10%
-    elem.style.width = width + '%'; 
+  var elem = document.getElementById("myBar");
+
+  if (filled <= 100) {
+    filled += 10; // Increase the fill by 10%
+
+    // Update the background fill using the data-filled attribute
+    elem.style.background = `linear-gradient(orange 0 0) 0/${filled}% no-repeat rgb(35, 35, 43)`;
+  }
+}
+function movesub() {
+  var elem = document.getElementById("myBar");
+
+  if (filled >= 1) {
+    filled -= 10; // Increase the fill by 10%
+
+    // Update the background fill using the data-filled attribute
+    elem.style.background = `linear-gradient(orange 0 0) 0/${filled}% no-repeat rgb(35, 35, 43)`;
   }
 }
 
