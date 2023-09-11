@@ -40,10 +40,7 @@ body::-webkit-scrollbar-thumb {
   background: #1e1e24;
 } 
 
-.wrapper {
-  display: flex;
-  height: 100vh;
-}
+
 .content {
   box-sizing: border-box;
   position: absolute;
@@ -139,6 +136,7 @@ p {
   text-align: center;
   font-size: 4vh;
   font-weight: bolder;
+  border-radius: 20px;
   color: rgb(214, 157, 0);
 }
 
