@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitnefy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <button class="logo" onclick="changeText(),increment()">Fitnefy</button>
+        <h1>Level</h1>
+        <div id="counter">0</div>
+        <h2 class="block"><a href="Profile.html">Profile</a></h2>
+        <h2 class="block">Stats</h2>
+        <h2 class="block">Adjust</h2>
+        <h2 class="block">Notes</h2>
+        <button id="settings">Settings</button>
+
+    </div>
+    <div class="content">
+        <div class="grid">
+            <div class="item">
+                Strength
+                <div id='strength' class="progress-1"></div>
+                <button class="action_btn add" onclick="moveadd('strength')">+</button>
+                <button class=" action_btn sub" onclick="movesub('strength')">-</button>
+            </div>
+            <div class="item">Dexterity
+                <div id="dexterity" class="progress-1"></div>
+                <button class="action_btn add" onclick="moveadd('dexterity')">+</button>
+                <button class="action_btn sub" onclick="movesub('dexterity')">-</button>
+            </div>
+            <div class="item">Intelligence
+                <div id="intelligence" class="progress-1"></div>
+                <button class="action_btn add" onclick="moveadd('intelligence')">+</button>
+                <button class="action_btn sub" onclick="movesub('intelligence')">-</button>
+            </div>
+            <div class="item">Perception
+                <div id="perception" class="progress-1"></div>
+                <button class="action_btn add" onclick="moveadd('perception')">+</button>
+                <button class="action_btn sub" onclick="movesub('perception')">-</button>
+            </div>
+            <div class="item">Endurance
+                <div id="endurance" class="progress-1"></div>
+                <button class="action_btn add" onclick="moveadd('endurance')">+</button>
+                <button class="action_btn sub" onclick="movesub('endurance')">-</button>
+            </div>
+            <div class="item">Luck
+                <div id="luck" class="progress-1"></div>
+                <button class="action_btn add" onclick="moveadd('luck')">+</button>
+                <button class="action_btn sub" onclick="movesub('luck')">-</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+<!--<div class="block-item"></div>  So goal 1 is to make the div to add themselves 
+                            <div class="block-item"></div> Goal 2 having different options 
+                            <div class="block-item"></div>a way to overlap your max like ng+ 
+                            <div class="block-item"></div>
+                            <div class="block-item"></div>-->
+
+</html>
