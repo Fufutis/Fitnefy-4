@@ -42,7 +42,8 @@ a:hover {
 }
 
 a:active {
-  color: rgb(255, 255, 255);
+  color: rgb(214, 157, 0);
+  background-color: transparent;
 }
 
 body {
@@ -160,9 +161,16 @@ p {
   text-align: center;
   
 }
+.blockbtn:active{
+  background-color: rgb(0, 0, 0);
+  color:rgb(214, 157, 0)
+}
 .sidebar:hover .blockbtn {
-  font-stretch:ultra-expanded;
+  font-size: 2.5vh;
+  padding-left: 30%;
   transition: 0.3s ease-in-out;
+  padding-bottom: 5%;
+  padding-top: 4%;
 }
 #settings {
   font-size: 1.8vh;
