@@ -1,13 +1,15 @@
-var number = 0;
+//--------------------------------------LEVEL COUNTER---------------------------------------------------------
+var level = 0;
 
 function increment() {
-    number++;
-    console.log(number);
-    document.getElementById("counter").innerHTML = number;
+  level++;
+    console.log(level);
+    document.getElementById("counter").innerHTML = level;
 }
 function changeText() {
-    document.querySelector("p").innerHTML = "You are now level " + (number+1) + " continue improving";
+    document.querySelector("p").innerHTML = "You are now level " + (level+1) + " continue improving";
 }
+//--------------------------------------STAT-BAR FILLER(+ -)----------------------------------------------------
 const INITIAL_FILL = 0; // Initial fill percentage
 let stats = {
   strength: INITIAL_FILL,
@@ -46,3 +48,4 @@ function movesub(stat) {
   stats[stat] = Math.max(stats[stat] - 10, 0);
   updateBarForStat(stat);
 }
+//---------------------------------------------------------------------------------------------------------------
