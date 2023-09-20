@@ -12,11 +12,18 @@ export default class NotesAPI {
 
   static saveNote(noteToSave) {
     const notes = NotesAPI.getALLNotes();
+    const existing = notes.find((note) => note.id == noteToSave.id);
 
-    noteToSave.id = Math.floor(Math.random() * 1000000); //creates an id for a note
-    noteToSave.updated = new Date().toISOString(); //timestamp for our note again (bcs we are creating one here so we are bringing it to existance)d
+    if (existing) {
+      existing.title = noteToSave.title;
+      existing.body = noteToSave.body;
+      existing.updated = new Date().toISOString();
+    } else {
+      noteToSave.id = Math.floor(Math.random() * 1000000); //creates an id for a note
+      noteToSave.updated = new Date().toISOString(); //timestamp for our note again (bcs we are creating one here so we are bringing it to existance)d
 
-    notes.push(noteToSave); //saves the note
+      notes.push(noteToSave); //saves the note
+    }
     localStorage.setItem("notesapp-notes", JSON.stringify(notes));
   }
 
