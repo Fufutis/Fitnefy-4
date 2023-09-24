@@ -258,6 +258,7 @@ p {
 
 .notes__list-item {
   cursor: pointer;
+  background: rgb(69, 69, 70);
 }
 
 .notes__list-item--selected {

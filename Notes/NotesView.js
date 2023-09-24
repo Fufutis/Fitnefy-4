@@ -33,5 +33,37 @@ export default class NotesView {
             this.onNoteEdit(updatedTitle, updatedBody);
         });
     });
+
+    console.log(this._createListItemHTML(300, "Hey", "Yeah mate", new Date()))
+  }
+
+  _createListItemHTML(id,title,body,updated){
+    const MAX_BODY_LENGTH=60;
+
+    return `
+      <div class="notes__list-item" data-note-id"${id}">
+        <div class="notes__small-title">${title}</div>
+        <div class="notes__small-body">
+        ${body.substring(0,MAX_BODY_LENGTH)}
+        ${body.length>MAX_BODY_LENGTH ?"...":""}
+        </div>
+        <div class="notes__small-updated">
+        ${updated.toLocaleString(undefined, {dataStyle: "full", timeStyle: "short"})}
+        </div>
+      </div>
+    `
+    
+  }
+  updatedNoteList(notes){
+    const notesListCointainer = this.root.querySelector(".notes__list");
+
+  //empty list
+    notesListCointainer.innerHTML = "";
+    
+    for (const note of notes){
+      const html = this._createListItemHTML(note.id, note.title, note.body, new Date(note.updated));
+
+      notesListCointainer.insertAdjacentHTML("beforeend", html);
+    }
   }
 }

@@ -1,5 +1,5 @@
 import NotesView from "./NotesView.js";
-import NotesAPI from "./NotesView.js";
+import NotesAPI from "./NotesAPI.js";
 
 const app = document.getElementById("app");
 const view = new NotesView(app, {
@@ -25,3 +25,4 @@ NotesAPI.saveNote({
 NotesAPI.deleteNote();
 console.log(NotesAPI.getALLNotes());
 */
+view.updatedNoteList(NotesAPI.getALLNotes());
