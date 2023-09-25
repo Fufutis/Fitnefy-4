@@ -258,7 +258,7 @@ p {
 
 .notes__list-item {
   cursor: pointer;
-  background: rgb(69, 69, 70);
+  /*background: rgb(69, 69, 70);*/
 }
 
 .notes__list-item--selected {
@@ -275,10 +275,12 @@ p {
 
 .notes__small-title {
   font-size: 1.2em;
+  color: white;
 }
 
 .notes__small-body {
   padding: 0 10px;
+  color: white;
 }
 
 .notes__small-updated {

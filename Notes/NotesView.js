@@ -55,15 +55,29 @@ export default class NotesView {
     
   }
   updatedNoteList(notes){
-    const notesListCointainer = this.root.querySelector(".notes__list");
+    const notesListContainer = this.root.querySelector(".notes__list");
 
   //empty list
-    notesListCointainer.innerHTML = "";
+  notesListContainer.innerHTML = "";
     
     for (const note of notes){
       const html = this._createListItemHTML(note.id, note.title, note.body, new Date(note.updated));
 
-      notesListCointainer.insertAdjacentHTML("beforeend", html);
+      notesListContainer.insertAdjacentHTML("beforeend", html);
     }
+    //add select/delete events for each list item
+    notesListContainer.querySelectorAll(".notes__list-item").forEach(noteListItem =>{
+      noteListItem.addEventListener("click", () => {
+          this.onNoteSelect(noteListItem.dataset.noteId);
+      });
+
+      noteListItem.addEventListener("dblclick", () => {
+          const doDelete = confirm("Are you sure you want to delete this note?");
+
+          if (doDelete) {
+              this.onNoteDelete(noteListItem.dataset.noteId);
+          }
+      });
+  });
   }
 }

@@ -10,6 +10,9 @@ const view = new NotesView(app, {
     console.log(newTitle);
     console.log(newBody);
   },
+  onNoteSelect(id) {
+    console.log("Note Selected:" + id);
+  },
   //onNoteAdd
   //onNoteEdit
   //onNoteDelete
@@ -17,12 +20,12 @@ const view = new NotesView(app, {
 /*import NotesAPI from "./NotesAPI.js";
 
 NotesAPI.saveNote({
-  id: 32909,
-  title: "The title has changed",
-  body: "WAGWAN g",
+  id: 322909,
+  title: "The ti2tle has changed",
+  body: "WAGW2AN g",
 });
-
-NotesAPI.deleteNote();
-console.log(NotesAPI.getALLNotes());
 */
+//NotesAPI.deleteNote();
+//console.log(NotesAPI.getALLNotes());
+
 view.updatedNoteList(NotesAPI.getALLNotes());
