@@ -6,9 +6,18 @@ function increment() {
     console.log(level);
     document.getElementById("counter").innerHTML = level;
 }
-function changeText() {
-    document.querySelector("p").innerHTML = "You are now level " + (level+1) + " continue improving";
+function changeText(elementId) {
+  // Find the specific <p> element by its ID
+  var paragraph = document.getElementById("levelText");
+  
+  paragraph.innerHTML = "You are now level " + (level + 1) + " continue improving";
+
+  setTimeout(function() {
+    paragraph.innerHTML = "What are you going to do?";
+}, 3000);
+ 
 }
+
 //--------------------------------------STAT-BAR FILLER(+ -)----------------------------------------------------
 const INITIAL_FILL = 0; // Initial fill percentage
 let stats = {
