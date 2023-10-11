@@ -1,6 +1,6 @@
 //--------------------------------------LEVEL COUNTER---------------------------------------------------------
 var level = 0;
-
+var timeoutId; 
 function increment() {
   level++;
     console.log(level);
@@ -12,9 +12,17 @@ function changeText(elementId) {
   
   paragraph.innerHTML = "You are now level " + (level + 1) + " continue improving";
 
-  setTimeout(function() {
-    paragraph.innerHTML = "What are you going to do?";
-}, 3000);
+  function resetTimer() {
+    
+    // Clear the previous timeout (if any)
+    clearTimeout(timeoutId);
+
+    // Set a new timeout
+    timeoutId = setTimeout(function() {
+        paragraph.innerHTML = "What are you going to do?";
+    }, 3000);
+}
+resetTimer();
  
 }
 
