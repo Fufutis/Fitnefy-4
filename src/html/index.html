@@ -10,7 +10,7 @@
 
 <body>
     <div class="container">
-        <form class="form" id="login" action="/login" method="POST">
+        <form class="form" id="login">
             <h1 class="form__title">Login</h1>
             <div class="form__input-group">
                 <input type="text" class="form__input" name="username" placeholder="Username or email" required>
@@ -27,17 +27,20 @@
         <form class="form form--hidden" id="createAccount">
             <h1 class="form__title">Create Account</h1>
             <div class="form__input-group">
-                <input type="text" id="signupUsername" class="form__input" placeholder="Username" required>
-            </div>
-            <div class="form__input-group">
-                <input type="email" id="signupEmail" class="form__input" placeholder="Email Address" required>
-            </div>
-            <div class="form__input-group">
-                <input type="password" id="signupPassword" class="form__input" placeholder="Password" required>
-            </div>
-            <div class="form__input-group">
-                <input type="password" id="signupConfirmPassword" class="form__input" placeholder="Confirm Password"
+                <input type="text" id="signupUsername" class="form__input" name="signupUsername" placeholder="Username"
                     required>
+            </div>
+            <div class="form__input-group">
+                <input type="email" id="signupEmail" class="form__input" name="signupEmail" placeholder="Email Address"
+                    required>
+            </div>
+            <div class="form__input-group">
+                <input type="password" id="signupPassword" class="form__input" name="signupPassword"
+                    placeholder="Password" required>
+            </div>
+            <div class="form__input-group">
+                <input type="password" id="signupConfirmPassword" class="form__input" name="signupConfirmPassword"
+                    placeholder="Confirm Password" required>
             </div>
             <button class="form__button" type="submit">Sign Up</button>
             <p class="form__text">

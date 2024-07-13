@@ -67,16 +67,20 @@ app.post('/login', async (req, res) => {
 
 app.post('/register', async (req, res) => {
   const { username, password, email } = req.body;
-  console.log('Registration request received', username);
+  console.log('Registration request received:', username, password, email);
 
   try {
+    if (!username || !password || !email) {
+      throw new Error('Missing required fields');
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
     console.log('Hashed password:', hashedPassword);
     await db.promise().query('INSERT INTO users (username, password, email) VALUES (?, ?, ?)', [username, hashedPassword, email]);
-    console.log('Registration successful for user', username);
+    console.log('Registration successful for user:', username);
     res.status(201).json({ message: 'Registration successful' });
   } catch (err) {
-    console.error('Server error during registration', err);
+    console.error('Server error during registration:', err);
     res.status(500).json({ message: 'Registration failed', error: err.message });
   }
 });
@@ -84,3 +88,4 @@ app.post('/register', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+

@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+
   createAccountForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(createAccountForm);
@@ -54,6 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
       password: formData.get('signupPassword'),
       confirmPassword: formData.get('signupConfirmPassword')
     };
+
+    console.log('Submitting registration form:', data);
 
     try {
       const response = await fetch('http://localhost:3000/register', {
