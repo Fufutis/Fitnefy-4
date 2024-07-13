@@ -73,39 +73,50 @@ app.post('/login', async (req, res) => {
 });
 
 // Handle registration requests
-app.post('/register', async (req, res) => {
+app.post('/register', (req, res) => {
   const { username, password, email } = req.body;
   console.log('Registration request received:', username, password, email);
 
-  try {
-    if (!username || !password || !email) {
-      throw new Error('Missing required fields');
-    }
-
-    // Check if the username or email already exists
-    const [existingUsers] = await db.promise().query('SELECT username, email FROM users WHERE username = ? OR email = ?', [username, email]);
-    if (existingUsers.length > 0) {
-      const existingUsernames = existingUsers.map(user => user.username);
-      const existingEmails = existingUsers.map(user => user.email);
-
-      if (existingUsernames.includes(username)) {
-        return res.status(400).json({ message: 'Username already exists' });
-      }
-      if (existingEmails.includes(email)) {
-        return res.status(400).json({ message: 'Email already exists' });
-      }
-    }
-
-    // Hash the password and insert the new user
-    const hashedPassword = await bcrypt.hash(password, 10);
-    console.log('Hashed password:', hashedPassword);
-    await db.promise().query('INSERT INTO users (username, password, email) VALUES (?, ?, ?)', [username, hashedPassword, email]);
-    console.log('Registration successful for user:', username);
-    res.status(201).json({ message: 'Registration successful' });
-  } catch (err) {
-    console.error('Server error during registration:', err);
-    res.status(500).json({ message: 'Registration failed', error: err.message });
+  if (!username || !password || !email) {
+    return res.status(400).json({ message: 'Missing required fields' });
   }
+
+  // Check if the username or email already exists
+  db.query('SELECT username, email FROM users WHERE username = ? OR email = ?', [username, email], (err, existingUsers) => {
+    if (err) {
+      console.error('Error querying database for existing users:', err);
+      return res.status(500).json({ message: 'Server error' });
+    }
+
+    const existingUsernames = existingUsers.map(user => user.username);
+    const existingEmails = existingUsers.map(user => user.email);
+
+    if (existingUsernames.includes(username)) {
+      return res.status(400).json({ message: 'Username already exists' });
+    }
+    if (existingEmails.includes(email)) {
+      return res.status(400).json({ message: 'Email already exists' });
+    }
+
+    // Hash the password
+    bcrypt.hash(password, 10, (err, hashedPassword) => {
+      if (err) {
+        console.error('Error hashing password:', err);
+        return res.status(500).json({ message: 'Server error' });
+      }
+
+      // Insert the new user
+      db.query('INSERT INTO users (username, password, email) VALUES (?, ?, ?)', [username, hashedPassword, email], (err, result) => {
+        if (err) {
+          console.error('Error inserting new user:', err);
+          return res.status(500).json({ message: 'Registration failed', error: err.message });
+        }
+
+        console.log('Registration successful for user:', username);
+        res.status(201).json({ message: 'Registration successful' });
+      });
+    });
+  });
 });
 
 // Start the server
