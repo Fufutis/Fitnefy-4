@@ -87,7 +87,7 @@ app.post('/register', async (req, res) => {
     if (existingUsers.length > 0) {
       const existingUsernames = existingUsers.map(user => user.username);
       const existingEmails = existingUsers.map(user => user.email);
-      
+
       if (existingUsernames.includes(username)) {
         return res.status(400).json({ message: 'Username already exists' });
       }
@@ -120,9 +120,9 @@ app.listen(port, () => {
 // USE fitnefy_db;
 // CREATE TABLE users (
 // id INT AUTO_INCREMENT PRIMARY KEY,
-// username VARCHAR(255) NOT NULL,
+// username VARCHAR(255) NOT NULL UNIQUE,
 // password VARCHAR(255) NOT NULL,
-// email VARCHAR(255) NOT NULL
+// email VARCHAR(255) NOT NULL UNIQUE
 // );
 
 // Sample SQL commands

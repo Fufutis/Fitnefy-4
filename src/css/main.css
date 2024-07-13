@@ -3,16 +3,16 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-color: rgb(28, 28, 32);
     margin: 0;
     font-family: Arial, sans-serif;
 }
 
 .container {
-    background: #fff;
+    background: rgb(35, 35, 43);
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgb(100, 100, 98);
     width: 300px;
 }
 
@@ -24,6 +24,7 @@ body {
 .form__title {
     margin: 0 0 20px 0;
     text-align: center;
+    color : rgb(214, 157, 0);
 }
 
 .form__input-group {
@@ -33,15 +34,17 @@ body {
 .form__input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(28, 28, 32);
     border-radius: 5px;
     box-sizing: border-box;
+    background-color: rgb(28, 28, 32);
+    color: #fff;
 }
 
 .form__button {
     padding: 10px;
     border: none;
-    background: #007bff;
+    background: rgb(214, 157, 0); 
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
@@ -52,7 +55,7 @@ body {
 }
 
 .form__link {
-    color: #007bff;
+    color: rgb(214, 157, 0);
     cursor: pointer;
     text-decoration: none;
 }
