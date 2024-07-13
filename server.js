@@ -1,12 +1,12 @@
-const express = require('express');
-const mysql = require('mysql2');
-const bcrypt = require('bcrypt');
-const path = require('path');
-const cors = require('cors');
+const express = require('express'); //Creates an Express application/ Defines routes/ Starts the server
+const mysql = require('mysql2');  //MySQL connection/ Executes queries
+const bcrypt = require('bcrypt'); //Hashes passwords/ Compares passwords:
+const path = require('path'); //Builds file paths
+const cors = require('cors'); //Configures CORS settings/ Applies CORS middleware
 const app = express();
 const port = 3000;
 
-// Create a MySQL connection
+// Creates a MySQL connection
 const db = mysql.createConnection({
   host: '127.0.0.1',
   user: 'guest1',
