@@ -75,6 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
         loginForm.classList.remove('form--hidden');
         createAccountForm.classList.add('form--hidden');
       } else {
+        if (result.message === 'Username already exists') {
+          alert('Username already exists. Please choose another one.');
+        }
         console.error('Registration failed', result);
       }
     } catch (error) {
