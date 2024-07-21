@@ -65,4 +65,12 @@ function movesub(stat) {
   stats[stat] = Math.max(stats[stat] - 10, 0);
   updateBarForStat(stat);
 }
-//---------------------------------------------------------------------------------------------------------------
+//--------------------------------------USERNAME DISPLAY-----------------------------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+   // Retrieve the username from localStorage
+  const username = localStorage.getItem('username');
+  // If a username exists in localStorage, display it
+  if (username) {
+      document.getElementById('intro').textContent = `Hello, ${username}!`;
+  }
+});

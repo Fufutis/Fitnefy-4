@@ -3,6 +3,9 @@ const mysql = require('mysql2');  //MySQL connection/ Executes queries
 const bcrypt = require('bcrypt'); //Hashes passwords/ Compares passwords:
 const path = require('path'); //Builds file paths
 const cors = require('cors'); //Configures CORS settings/ Applies CORS middleware
+const session = require('express-session'); // Handles sessions
+const MySQLStore = require('express-mysql-session')(session); // Stores sessions in MySQL
+
 const app = express();
 const port = 3000;
 
@@ -24,6 +27,18 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Configure session store and middleware
+const sessionStore = new MySQLStore({}, db.promise());
+
+app.use(session({
+  key: 'session_cookie_name',
+  secret: 'secret-key',
+  store: sessionStore,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false } // Set to true if using HTTPS
+}));
 
 // Connect to the MySQL database
 db.connect((err) => {
@@ -57,7 +72,8 @@ app.post('/login', async (req, res) => {
 
       if (match) {
         console.log('Login successful for user', username);
-        res.status(200).json({ message: 'Login successful' });
+        req.session.username = username; // Save username in session
+        res.status(200).json({ message: 'Login successful', username: username });
       } else {
         console.warn('Incorrect password for user', username);
         res.status(401).json({ message: 'Incorrect username or password' });
