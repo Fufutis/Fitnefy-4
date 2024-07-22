@@ -25,42 +25,52 @@
         <p id="levelText">Any improvements for today?</p>
         <div>
             <div class="grid">
-                <div class="item">
+                <div class="item" onclick="navigateToPage('Strength.html')">
                     Strength
                     <div id='strength' class="progress-1"></div>
-                    <button class="action_btn add" onclick="movesub('strength')">-</button>
-                    <button class=" action_btn sub" onclick="moveadd('strength')">+</button>
+                    <button class="action_btn add" onclick="event.stopPropagation(); movesub('strength')">-</button>
+                    <button class="action_btn sub" onclick="event.stopPropagation(); moveadd('strength')">+</button>
                 </div>
-                <div class="item">Dexterity
+                <div class="item" onclick="navigateToPage('Dexterity.html')">
+                    Dexterity
                     <div id="dexterity" class="progress-1"></div>
-                    <button class="action_btn add" onclick="movesub('dexterity')">-</button>
-                    <button class="action_btn sub" onclick="moveadd('dexterity')">+</button>
+                    <button class="action_btn add" onclick="event.stopPropagation(); movesub('dexterity')">-</button>
+                    <button class="action_btn sub" onclick="event.stopPropagation(); moveadd('dexterity')">+</button>
                 </div>
-                <div class="item">Intelligence
+                <div class="item" onclick="navigateToPage('Intelligence.html')">
+                    Intelligence
                     <div id="intelligence" class="progress-1"></div>
-                    <button class="action_btn add" onclick="movesub('intelligence')">-</button>
-                    <button class="action_btn sub" onclick="moveadd('intelligence')">+</button>
+                    <button class="action_btn add" onclick="event.stopPropagation(); movesub('intelligence')">-</button>
+                    <button class="action_btn sub" onclick="event.stopPropagation(); moveadd('intelligence')">+</button>
                 </div>
-                <div class="item">Perception
+                <div class="item" onclick="navigateToPage('Perception.html')">
+                    Perception
                     <div id="perception" class="progress-1"></div>
-                    <button class="action_btn add" onclick="movesub('perception')">-</button>
-                    <button class="action_btn sub" onclick="moveadd('perception')">+</button>
+                    <button class="action_btn add" onclick="event.stopPropagation(); movesub('perception')">-</button>
+                    <button class="action_btn sub" onclick="event.stopPropagation(); moveadd('perception')">+</button>
                 </div>
-                <div class="item">Endurance
+                <div class="item" onclick="navigateToPage('Endurance.html')">
+                    Endurance
                     <div id="endurance" class="progress-1"></div>
-                    <button class="action_btn add" onclick="movesub('endurance')">-</button>
-                    <button class="action_btn sub" onclick="moveadd('endurance')">+</button>
+                    <button class="action_btn add" onclick="event.stopPropagation(); movesub('endurance')">-</button>
+                    <button class="action_btn sub" onclick="event.stopPropagation(); moveadd('endurance')">+</button>
                 </div>
-                <div class="item">Luck
+                <div class="item" onclick="navigateToPage('Luck.html')">
+                    Luck
                     <div id="luck" class="progress-1"></div>
-                    <button class="action_btn add" onclick="movesub('luck')">-</button>
-                    <button class="action_btn sub" onclick="moveadd('luck')">+</button>
+                    <button class="action_btn add" onclick="event.stopPropagation(); movesub('luck')">-</button>
+                    <button class="action_btn sub" onclick="event.stopPropagation(); moveadd('luck')">+</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="../js/script.js"></script>
+    <script>
+        function navigateToPage(page) {
+            window.location.href = page;
+        }
+    </script>
 </body>
 
 </html>
