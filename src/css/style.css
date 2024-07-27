@@ -29,7 +29,7 @@ p {
 }
 
 .workouts li {
-  flex: 1 1 calc(60% - 20px); /* First column takes 60% with space accounted for the gap */
+  flex: 1 1 calc(70% - 5px); /* First column takes 65% with space accounted for the gap */
   padding: 10px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -38,16 +38,16 @@ p {
 }
 
 .workouts li:nth-child(3n+2) {
-  flex: 1 1 calc(20% - 20px); /* Second column takes 20% with space accounted for the gap */
+  flex: 1 1 calc(24% - 5px); /* Second column takes 25% with space accounted for the gap */
 }
 
 .workouts li:nth-child(3n+3) {
-  flex: 1 1 calc(5% - 50px); /* Third column takes 10% with space accounted for the gap */
+  flex: 1 1 calc(1% - 5px); /* Third column takes 5% with space accounted for the gap */
   margin-right: 1.5%;
-  padding-top: 1.2%;
   text-align: center;
   background-color: var(--primary-color);
   color: var(--secondary-color) ;
+  
 }
 
 li {
@@ -58,17 +58,17 @@ li {
   line-height: 1; /* Adjusted line height for better readability */
 }
 
+
 .description {
   color: aliceblue;
-  padding-top: 2%;
-  padding-bottom: 2%;
+  margin-top: 1.25%;
   padding-left: 1%;
 }
 
 .reps {
-  font-size: 2.25vh;
+  font-size: 2.1vh;
   text-align: center;
-  padding-top: 7.5%;
+  margin-top: 4%;
   color: var(--primary-color);
 }
 
@@ -90,12 +90,15 @@ li {
   color: var(--primary-color);
 }
 .next {
-  width: 50px; /* Adjust as needed */
-  height: 50px; /* Adjust as needed */
+  width: 14px; /* Adjust as needed */
+  height: 38px; /* Adjust as needed */;
   background-image: url('../imgs/right-triangle.png'); /* Adjust the path as needed */
   background-size: contain;
   background-repeat: no-repeat;
   display: inline-block;
+  margin-top: 40%;
+  margin-left: 8%;
+  padding-left: -10%;
 }
 
 .logo {
