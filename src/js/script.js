@@ -74,3 +74,36 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('intro').textContent = `Hello, ${username}!`;
   }
 });
+
+//--------------------------------------Upgrades--------------------------------------------------------->
+let clickCounts = {};
+
+function updateReps(id) {
+    if (!clickCounts[id]) {
+        clickCounts[id] = 0;
+    }
+
+    const repsDiv = document.getElementById(id);
+    const currentText = repsDiv.innerText;
+    const matches = currentText.match(/(\d+)\s*sets\s*of\s*(\d+)-(\d+)\s*reps/);
+
+    if (matches) {
+        let sets = parseInt(matches[1]);
+        let minReps = parseInt(matches[2]);
+        let maxReps = parseInt(matches[3]);
+
+        if (clickCounts[id] < 3) {
+            minReps += 2;
+            maxReps += 2;
+        } else {
+            sets += 1;
+            minReps -= 6;
+            maxReps -= 6;
+            clickCounts[id] = -1; // reset to -1 because it will be incremented to 0 at the end of this function
+        }
+
+        repsDiv.innerText = `Reps/Sets: ${sets} sets of ${minReps}-${maxReps} reps`;
+    }
+
+    clickCounts[id]++;
+}
