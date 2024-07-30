@@ -67,14 +67,17 @@ function movesub(stat) {
 }
 //--------------------------------------USERNAME DISPLAY-----------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
-   // Retrieve the username from localStorage
-  const username = localStorage.getItem('username');
-  // If a username exists in localStorage, display it
-  if (username) {
-      document.getElementById('intro').textContent = `Hello, ${username}!`;
+  // Check if the #intro element exists on the page
+  const introElement = document.getElementById('intro');
+  if (introElement) {
+      // Retrieve the username from localStorage
+      const username = localStorage.getItem('username');
+      // If a username exists in localStorage, display it
+      if (username) {
+          introElement.textContent = `Hello, ${username}!`;
+      }
   }
 });
-
 //--------------------------------------Upgrades--------------------------------------------------------->
 let clickCounts = {};
 
@@ -83,26 +86,55 @@ function updateReps(id) {
         clickCounts[id] = 0;
     }
 
-    const repsDiv = document.getElementById(id);
+    const repsDiv = document.querySelector(`#${id}`);
+    if (!repsDiv) {
+        console.error(`Element with id "${id}" not found.`);
+        return;
+    }
+
     const currentText = repsDiv.innerText;
-    const matches = currentText.match(/(\d+)\s*sets\s*of\s*(\d+)-(\d+)\s*reps/);
+    const weightMatches = currentText.match(/(\d+)\s*Sets\s*of\s*(\d+)-(\d+)\s*Reps,\s*Weight:\s*(\d+\.?\d*)\s*kg/);
+    const noWeightMatches = currentText.match(/(\d+)\s*Sets\s*of\s*(\d+)-(\d+)\s*Reps/);
 
-    if (matches) {
-        let sets = parseInt(matches[1]);
-        let minReps = parseInt(matches[2]);
-        let maxReps = parseInt(matches[3]);
+    if (weightMatches) {
+        let sets = parseInt(weightMatches[1]);
+        let minReps = parseInt(weightMatches[2]);
+        let maxReps = parseInt(weightMatches[3]);
+        let weight = parseFloat(weightMatches[4]);
 
-        if (clickCounts[id] < 3) {
+        if (clickCounts[id] % 6 < 2) { // Reps + 2
             minReps += 2;
             maxReps += 2;
-        } else {
+        } else if (clickCounts[id] % 6 == 2) { // Set + 1 and Reps - 4
             sets += 1;
-            minReps -= 6;
-            maxReps -= 6;
-            clickCounts[id] = -1; // reset to -1 because it will be incremented to 0 at the end of this function
+            minReps -= 4;
+            maxReps -= 4;
+        } else if (clickCounts[id] % 6 < 5) { // Reps + 2
+            minReps += 2;
+            maxReps += 2;
+        } else { // Weight + 2.5kg, Set - 1, and Reps - 4
+            weight += 2.5;
+            sets = Math.max(1, sets - 1);
+            minReps -= 4;
+            maxReps -= 4;
         }
 
-        repsDiv.innerText = `Reps/Sets: ${sets} sets of ${minReps}-${maxReps} reps`;
+        repsDiv.innerText = `${sets} Sets of ${minReps}-${maxReps} Reps, Weight: ${weight} kg`;
+    } else if (noWeightMatches) {
+        let sets = parseInt(noWeightMatches[1]);
+        let minReps = parseInt(noWeightMatches[2]);
+        let maxReps = parseInt(noWeightMatches[3]);
+
+        if (clickCounts[id] % 6 < 2) { // Reps + 2
+            minReps += 2;
+            maxReps += 2;
+        } else{
+            minReps += 4;
+            maxReps += 4;
+
+        }
+
+        repsDiv.innerText = `${sets} Sets of ${minReps}-${maxReps} Reps`;
     }
 
     clickCounts[id]++;
