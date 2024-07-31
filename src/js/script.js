@@ -95,6 +95,8 @@ function updateReps(id) {
     const currentText = repsDiv.innerText;
     const weightMatches = currentText.match(/(\d+)\s*Sets\s*of\s*(\d+)-(\d+)\s*Reps,\s*Weight:\s*(\d+\.?\d*)\s*kg/);
     const noWeightMatches = currentText.match(/(\d+)\s*Sets\s*of\s*(\d+)-(\d+)\s*Reps/);
+    const enduranceMatches = currentText.match(/(\d+)\s*minutes,\s*(.*)/);
+    const setsOfMinutesMatches = currentText.match(/(\d+)\s*Sets\s*of\s*(\d+)\s*minutes/);
 
     if (weightMatches) {
         let sets = parseInt(weightMatches[1]);
@@ -128,13 +130,46 @@ function updateReps(id) {
         if (clickCounts[id] % 6 < 2) { // Reps + 2
             minReps += 2;
             maxReps += 2;
-        } else{
+        } else {
             minReps += 4;
             maxReps += 4;
-
         }
 
         repsDiv.innerText = `${sets} Sets of ${minReps}-${maxReps} Reps`;
+    } else if (enduranceMatches) {
+        let minutes = parseInt(enduranceMatches[1]);
+        let originalMinutes = parseInt(enduranceMatches[1]);
+        let pace = enduranceMatches[2];
+
+        if (clickCounts[id] % 4 == 0) { // Increase duration by 5 minutes
+            minutes += 5;
+        } else if (clickCounts[id] % 4 == 1) { // Increase duration by another 5 minutes
+            minutes += 5;
+        } else if (clickCounts[id] % 4 == 2) { // Decrease duration by 15 minutes and increase pace
+            minutes -= 15;
+            if (!pace.includes("Increased")) {
+                pace = `Increased ${pace}`;
+            }
+        } else { // Increase duration by 20 minutes from the original state without the increased pace
+            minutes = originalMinutes + 20;
+            pace = pace.replace("Increased ", "");
+        }
+
+        repsDiv.innerText = `${minutes} minutes, ${pace}`;
+    } else if (setsOfMinutesMatches) {
+        let sets = parseInt(setsOfMinutesMatches[1]);
+        let minutes = parseInt(setsOfMinutesMatches[2]);
+
+        if (clickCounts[id] % 3 == 0) { // Increase minutes by 1
+            minutes += 1;
+        } else if (clickCounts[id] % 3 == 1) { // Increase sets by 1
+            sets += 1;
+        } else { // Decrease sets by 1 and increase minutes by 2
+            sets = Math.max(1, sets - 1);
+            minutes += 2;
+        }
+
+        repsDiv.innerText = `${sets} Sets of ${minutes} minutes`;
     }
 
     clickCounts[id]++;

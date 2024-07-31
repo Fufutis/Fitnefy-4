@@ -19,12 +19,113 @@
         <button class="blockbtn"><a href="../Adjust.html">Adjust</a></button>
         <button class="blockbtn"><a href="../Notes.html">Notes</a></button>
         <button id="settings">Settings</button>
-
     </div>
-    <div class="content">
+    <div class="content contentStats">
+        <h2 class="title">ENDURANCE</h2>
+        <ol class="workouts">
+            <li>
+                <strong>Running</strong>
+                <div class="description">Improves cardiovascular endurance and overall stamina.</div>
+            </li>
+            <li>
+                <div class="reps" id="running">20 minutes, Moderate pace</div>
+            </li>
+            <li onclick="updateReps('running')">
+                <div class="next"></div>
+            </li>
 
+            <li>
+                <strong>Cycling</strong>
+                <div class="description">Enhances leg endurance and cardiovascular health.</div>
+            </li>
+            <li>
+                <div class="reps" id="cycling">35 minutes, Moderate pace</div>
+            </li>
+            <li onclick="updateReps('cycling')">
+                <div class="next"></div>
+            </li>
+
+            <li>
+                <strong>Jump Rope</strong>
+                <div class="description">Increases agility and cardiovascular fitness.</div>
+            </li>
+            <li>
+                <div class="reps" id="jump-rope">3 Sets of 2 minutes</div>
+            </li>
+            <li onclick="updateReps('jump-rope')">
+                <div class="next"></div>
+            </li>
+
+            <li>
+                <strong>Burpees</strong>
+                <!--Make a limit of 100 then we have new level which is prestige scaling (wont give points but will have a personal ranking with friends? trust factor has to exist to function)-->
+                <div class="description">Full-body exercise that boosts endurance and strength.</div>
+            </li>
+            <li>
+                <div class="reps" id="burpees">3 Sets of 15-17 Reps</div>
+            </li>
+            <li onclick="updateReps('burpees')">
+                <div class="next"></div>
+            </li>
+
+            <li>
+                <strong>Swimming</strong>
+                <div class="description">Improves overall body endurance and cardiovascular health.</div>
+            </li>
+            <li>
+                <div class="reps" id="swimming">20 minutes, Continuous laps</div>
+            </li>
+            <li onclick="updateReps('swimming')">
+                <div class="next"></div>
+            </li>
+
+            <li>
+                <strong>Mountain Climbers</strong>
+                <div class="description">Increases cardiovascular endurance and core strength.</div>
+            </li>
+            <li>
+                <div class="reps" id="mountain-climbers">3 Sets of 16-20 Reps</div>
+            </li>
+            <li onclick="updateReps('mountain-climbers')">
+                <div class="next"></div>
+            </li>
+
+            <li>
+                <strong>Bench Press</strong>
+                <div class="description">Description: Targets the chest, shoulders, and triceps.</div>
+            </li>
+            <li>
+                <div class="reps" id="bench-press">3 Sets of 6-10 Reps, Weight: 20 kg</div>
+            </li>
+            <li onclick="updateReps('bench-press')">
+                <div class="next"></div>
+            </li>
+
+            <li>
+                <strong>Deadlifts</strong>
+                <div class="description">Works the entire posterior chain including back, glutes, and hamstrings.</div>
+            </li>
+            <li>
+                <div class="reps" id="deadlifts">3 Sets of 4-6 Reps, Weight: 20 kg</div>
+            </li>
+            <li onclick="updateReps('deadlifts')">
+                <div class="next"></div>
+            </li>
+
+            <li>
+                <strong>Squats</strong>
+                <div class="description">Primarily targets the quadriceps, hamstrings, and glutes.</div>
+            </li>
+            <li>
+                <div class="reps" id="squats">3 Sets of 6-10 Reps, Weight: 0 kg</div>
+            </li>
+            <li onclick="updateReps('squats')">
+                <div class="next"></div>
+            </li>
+        </ol>
     </div>
-
 </body>
+
+<script src="../../js/script.js"></script>
 
 </html>
