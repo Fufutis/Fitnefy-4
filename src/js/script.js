@@ -79,11 +79,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 //--------------------------------------Upgrades--------------------------------------------------------->
+document.addEventListener('DOMContentLoaded', () => {
+    // Load saved progression and click count data when the page loads
+    loadProgression();
+});
+
 let clickCounts = {};
 
 function updateReps(id) {
     if (!clickCounts[id]) {
-        clickCounts[id] = 0;
+        // Retrieve the click count from localStorage if it exists
+        clickCounts[id] = parseInt(localStorage.getItem(`clickCount-${id}`)) || 0;
     }
 
     const repsDiv = document.querySelector(`#${id}`);
@@ -172,5 +178,85 @@ function updateReps(id) {
         repsDiv.innerText = `${sets} Sets of ${minutes} minutes`;
     }
 
+    // Increment click count
     clickCounts[id]++;
+
+    // Save progression and click count to localStorage
+    saveProgression(id, repsDiv.innerText);
+    saveClickCount(id, clickCounts[id]);
 }
+
+/**
+ * Save the click count for a workout to localStorage.
+ * @param {string} id - The id of the workout.
+ * @param {number} count - The current click count.
+ */
+function saveClickCount(id, count) {
+    localStorage.setItem(`clickCount-${id}`, count);
+}
+
+/**
+ * Save the progression of a workout routine to localStorage.
+ * @param {string} id - The id of the workout.
+ * @param {string} data - The progression data to save.
+ */
+function saveProgression(id, data) {
+    localStorage.setItem(`workout-${id}`, data);
+}
+
+/**
+ * Load saved progression data and click counts from localStorage and update the DOM.
+ */
+function loadProgression() {
+    const workoutIds = [
+        'bench-press', 'deadlifts', 'squats', 'shoulder-press', 
+        'bicep-curls', 'tricep-dips', 'pull-ups', 'pull-upsW', 
+        'leg-press', 'barbell-rows', 'lunges'
+    ];
+    
+    workoutIds.forEach(id => {
+        const savedData = localStorage.getItem(`workout-${id}`);
+        const savedClickCount = localStorage.getItem(`clickCount-${id}`);
+        
+        if (savedData) {
+            const repsDiv = document.querySelector(`#${id}`);
+            if (repsDiv) {
+                repsDiv.innerText = savedData;
+            }
+        }
+
+        if (savedClickCount) {
+            clickCounts[id] = parseInt(savedClickCount);
+        } else {
+            clickCounts[id] = 0; // Initialize to 0 if no saved count
+        }
+    });
+}
+
+//--------------------------------------Display-------------------------------------------------------
+function displaySavedInformation() {
+    const workoutIds = [
+        'bench-press', 'deadlifts', 'squats', 'shoulder-press', 
+        'bicep-curls', 'tricep-dips', 'pull-ups', 'pull-upsW', 
+        'leg-press', 'barbell-rows', 'lunges'
+    ];
+
+    workoutIds.forEach(id => {
+        const savedData = localStorage.getItem(`workout-${id}`);
+        const savedClickCount = localStorage.getItem(`clickCount-${id}`);
+        
+        if (savedData) {
+            console.log(`Progress for ${id}: ${savedData}`);
+            console.log(`Click count for ${id}: ${savedClickCount}`);
+
+            // Optionally display this information on your webpage
+            const displayElement = document.getElementById(`${id}-display`);
+            if (displayElement) {
+                displayElement.innerText = `Saved Progress: ${savedData} (Click Count: ${savedClickCount})`;
+            }
+        }
+    });
+}
+
+// Call this function to log the saved information to the console
+displaySavedInformation();
