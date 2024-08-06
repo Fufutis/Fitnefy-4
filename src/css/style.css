@@ -84,8 +84,10 @@ li {
   border-radius: 20px;
   border: 2px solid;
   position: relative;
-  background-color: var(--secondary-color); /* Background color when no progress */
-  background: linear-gradient(orange 0 0) 0% no-repeat var(--secondary-color);
+  background-color: var(--secondary-color);
+  background: linear-gradient(var(--progress-color) 0 0) 0% no-repeat var(--secondary-color);
+  color: var(--primary-color);
+  transition: color 0.3s ease; /* Smooth transition for text color */
 }
 
 .descinfo {

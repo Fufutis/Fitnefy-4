@@ -263,7 +263,44 @@ function loadProgression() {
         }
     });
 }
+//--------------------------------------Text-Gradiant-----------------------------------------------
+function getLuminance(rgb) {
+    const a = rgb.map(function (v) {
+        v /= 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+    return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+}
+function updateProgressBar(id) {
+    const progressBar = document.querySelector(`.${id}-progress`);
+    const repsDiv = document.querySelector(`#${id}`);
+    if (progressBar && repsDiv) {
+        const progressPercentage = Math.min((clickCounts[id] / 10) * 100, 100);
+        const backgroundColor = `linear-gradient(orange 0 0) 0/${progressPercentage}% no-repeat var(--secondary-color)`;
+        progressBar.style.background = backgroundColor;
 
+        // Assuming the background changes from grey to orange, calculate the mid-point RGB values
+        const greyRGB = [35, 35, 43]; // RGB for grey
+        const orangeRGB = [214, 157, 0]; // RGB for orange
+        const blendRatio = progressPercentage / 100;
+        const blendedRGB = [
+            Math.round(greyRGB[0] * (1 - blendRatio) + orangeRGB[0] * blendRatio),
+            Math.round(greyRGB[1] * (1 - blendRatio) + orangeRGB[1] * blendRatio),
+            Math.round(greyRGB[2] * (1 - blendRatio) + orangeRGB[2] * blendRatio)
+        ];
+        console.log("Blended RGB:", blendedRGB); // Debug output to see RGB values
+        // Determine the luminance of the blended background color
+        const lum = getLuminance(blendedRGB);
+        console.log("Luminance:", lum); // Check calculated luminance value
+
+        if (lum > 0.15) {
+            repsDiv.style.color = `linear-gradient(orange 0 0) 0/${progressPercentage}% no-repeat var(--secondary-color)`; 
+        } else {
+            repsDiv.style.color = 'var(--secondary-color)'; 
+        }
+        console.log("Text color set to:", repsDiv.style.color); // Confirm text color setting
+    }
+}
 //--------------------------------------Display-------------------------------------------------------
 function displaySavedInformation() {
     const workoutIds = [
