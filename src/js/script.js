@@ -9,8 +9,18 @@ function increment() {
     document.getElementById("counter").innerHTML = level; // Update counter display
     console.log("Level incremented to:", level); // Log for debugging
 }
+
+// Function to change text based on level and set a timeout to reset text
 function changeText(elementId) {
-    // Find the specific <p> element by its ID
+    var paragraph = document.getElementById("levelText"); // Get the paragraph element
+    if (paragraph) { // Check if paragraph exists
+        paragraph.innerHTML = "You are now level " + (level+1) + " continue improving";
+        resetTimer(); // Reset the timer to change text back after delay
+    }
+}
+
+// Function to reset text after a specified timeout
+function resetTimer(elementId) {
     var paragraph = document.getElementById("levelText"); // Re-acquire the paragraph element
 
     // Clear any existing timeout to prevent duplicates
