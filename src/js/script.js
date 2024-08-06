@@ -1,31 +1,34 @@
 //--------------------------------------LEVEL COUNTER---------------------------------------------------------
-var level = 0;
+// Initialize level from localStorage or set to 0 if not present
+var level = parseInt(localStorage.getItem('level')) || 0;
 var timeoutId; 
+// Function to increment level and save it to localStorage
 function increment() {
-  level++;
-    console.log(level);
-    document.getElementById("counter").innerHTML = level;
+    level++;
+    localStorage.setItem('level', level); // Persist level state across pages
+    document.getElementById("counter").innerHTML = level; // Update counter display
+    console.log("Level incremented to:", level); // Log for debugging
 }
 function changeText(elementId) {
-  // Find the specific <p> element by its ID
-  var paragraph = document.getElementById("levelText");
-  
-  paragraph.innerHTML = "You are now level " + (level + 1) + " continue improving";
+    // Find the specific <p> element by its ID
+    var paragraph = document.getElementById("levelText"); // Re-acquire the paragraph element
 
-  function resetTimer() {
-    
-    // Clear the previous timeout (if any)
+    // Clear any existing timeout to prevent duplicates
     clearTimeout(timeoutId);
 
-    // Set a new timeout
+    // Set a new timeout to revert the text after 3000 milliseconds (3 seconds)
     timeoutId = setTimeout(function() {
-        paragraph.innerHTML = "What are you going to do?";
+        if (paragraph) { // Check if paragraph still exists
+            paragraph.innerHTML = "What are you going to do next?";
+        }
     }, 3000);
-}
-resetTimer();
  
 }
-
+// Initialize the counter display when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("counter").innerHTML = level; // Set counter display
+    console.log("Page loaded. Current level is:", level); // Log for debugging
+});
 //--------------------------------------STAT-BAR FILLER(+ -)----------------------------------------------------
 const INITIAL_FILL = 0; // Initial fill percentage
 let stats = {
