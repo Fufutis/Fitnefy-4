@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     // Load saved progression and click count data when the page loads
     loadProgression();
+    updateProgressBars(); // Initialize progress bars with saved data
 });
 
 let clickCounts = {};
@@ -184,6 +185,36 @@ function updateReps(id) {
     // Save progression and click count to localStorage
     saveProgression(id, repsDiv.innerText);
     saveClickCount(id, clickCounts[id]);
+
+    // Update progress bar
+    updateProgressBar(id);
+}
+
+/**
+ * Update the progress bar's background based on the click count.
+ * @param {string} id - The id of the workout.
+ */
+function updateProgressBar(id) {
+    const progressBar = document.querySelector(`.${id}-progress`);
+    if (progressBar) {
+        const progressPercentage = Math.min((clickCounts[id] / 10) * 100, 100);
+        progressBar.style.background = `linear-gradient(orange 0 0) 0/${progressPercentage}% no-repeat var(--secondary-color)`;
+    }
+}
+
+/**
+ * Initialize all progress bars based on saved click counts.
+ */
+function updateProgressBars() {
+    const workoutIds = [
+        'bench-press', 'deadlifts', 'squats', 'shoulder-press', 
+        'bicep-curls', 'tricep-dips', 'pull-ups', 'pull-upsW', 
+        'leg-press', 'barbell-rows', 'lunges'
+    ];
+
+    workoutIds.forEach(id => {
+        updateProgressBar(id);
+    });
 }
 
 /**

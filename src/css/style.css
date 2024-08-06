@@ -80,6 +80,14 @@ li {
   color: var(--primary-color);
 }
 
+.progress {
+  border-radius: 20px;
+  border: 2px solid;
+  position: relative;
+  background-color: var(--secondary-color); /* Background color when no progress */
+  background: linear-gradient(orange 0 0) 0% no-repeat var(--secondary-color);
+}
+
 .descinfo {
   font-size: 2.5vh;
   display: flex;

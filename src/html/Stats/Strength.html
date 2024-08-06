@@ -25,9 +25,9 @@
         <ol class="workouts">
             <li>
                 <strong>Bench Press</strong>
-                <div class="description">Description: Targets the chest, shoulders, and triceps.</div>
+                <div class="description">Targets the chest, shoulders, and triceps.</div>
             </li>
-            <li>
+            <li class="progress bench-press-progress">
                 <div class="reps" id="bench-press">3 Sets of 6-10 Reps, Weight: 20 kg</div>
             </li>
             <li onclick="updateReps('bench-press')">
@@ -38,7 +38,7 @@
                 <strong>Deadlifts</strong>
                 <div class="description">Works the entire posterior chain including back, glutes, and hamstrings.</div>
             </li>
-            <li>
+            <li class="progress deadlifts-progress">
                 <div class="reps" id="deadlifts">3 Sets of 4-6 Reps, Weight: 20 kg</div>
             </li>
             <li onclick="updateReps('deadlifts')">
@@ -49,7 +49,7 @@
                 <strong>Squats</strong>
                 <div class="description">Primarily targets the quadriceps, hamstrings, and glutes.</div>
             </li>
-            <li>
+            <li class="progress squats-progress">
                 <div class="reps" id="squats">3 Sets of 6-10 Reps, Weight: 0 kg</div>
             </li>
             <li onclick="updateReps('squats')">
@@ -60,7 +60,7 @@
                 <strong>Overhead Shoulder Press</strong>
                 <div class="description">Focuses on the shoulders and triceps.</div>
             </li>
-            <li>
+            <li class="progress shoulder-press-progress">
                 <div class="reps" id="shoulder-press">3 Sets of 8-10 Reps, Weight: 2.5 kg</div>
             </li>
             <li onclick="updateReps('shoulder-press')">
@@ -71,7 +71,7 @@
                 <strong>Bicep Curls</strong>
                 <div class="description">Isolates the biceps for targeted strength building.</div>
             </li>
-            <li>
+            <li class="progress bicep-curls-progress">
                 <div class="reps" id="bicep-curls">3 Sets of 10-14 Reps, Weight: 2.5 kg</div>
             </li>
             <li onclick="updateReps('bicep-curls')">
@@ -82,7 +82,7 @@
                 <strong>Tricep Dips</strong>
                 <div class="description">Targets the triceps and chest.</div>
             </li>
-            <li>
+            <li class="progress tricep-dips-progress">
                 <div class="reps" id="tricep-dips">3 Sets of 8-12 Reps</div>
             </li>
             <li onclick="updateReps('tricep-dips')">
@@ -93,28 +93,31 @@
                 <strong>Pull-Ups</strong>
                 <div class="description">Works the back, shoulders, and biceps.</div>
             </li>
-            <li>
+            <li class="progress pull-ups-progress">
                 <div class="reps" id="pull-ups">2 Sets of 1-2 Reps</div>
-                <!-- 2 sets of 1 / 2 sets of 2 / 5 10/12 15/17 20/22-->
+                <!-- 2 sets of 1 / 2 sets of 2 / 5 10/12 15/17 20/22 -->
             </li>
             <li onclick="updateReps('pull-ups')">
                 <div class="next"></div>
             </li>
+
             <li>
-                <strong>Pull-Ups(Weighted)</strong>
+                <strong>Pull-Ups (Weighted)</strong>
                 <div class="description">Works the back, shoulders, and biceps.</div>
             </li>
-            <li>
-                <div class="reps" id="pull-upsW">2 Sets of 2-4 Reps, Weight: 2.5 kg</div><!--adjust later-->
+            <li class="progress pull-upsW-progress">
+                <div class="reps" id="pull-upsW">2 Sets of 2-4 Reps, Weight: 2.5 kg</div>
+                <!-- adjust later -->
             </li>
             <li onclick="updateReps('pull-upsW')">
                 <div class="next"></div>
             </li>
+
             <li>
                 <strong>Leg Press</strong>
                 <div class="description">Focuses on the quadriceps, glutes, and hamstrings.</div>
             </li>
-            <li>
+            <li class="progress leg-press-progress">
                 <div class="reps" id="leg-press">3 Sets of 8-10 Reps, Weight: 20 kg</div>
             </li>
             <li onclick="updateReps('leg-press')">
@@ -125,7 +128,7 @@
                 <strong>Barbell Rows</strong>
                 <div class="description">Targets the back muscles, particularly the lats.</div>
             </li>
-            <li>
+            <li class="progress barbell-rows-progress">
                 <div class="reps" id="barbell-rows">3 Sets of 8-10 Reps, Weight: 20 kg</div>
             </li>
             <li onclick="updateReps('barbell-rows')">
@@ -136,7 +139,7 @@
                 <strong>Lunges</strong>
                 <div class="description">Engages the quadriceps, hamstrings, and glutes.</div>
             </li>
-            <li>
+            <li class="progress lunges-progress">
                 <div class="reps" id="lunges">3 Sets of 8-10 Reps per leg, Weight: 2.5 kg</div>
             </li>
             <li onclick="updateReps('lunges')">
@@ -144,6 +147,7 @@
             </li>
         </ol>
     </div>
+
 </body>
 
 <script src="../../js/script.js"></script>
