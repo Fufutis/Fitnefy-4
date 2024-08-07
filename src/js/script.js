@@ -211,7 +211,7 @@ function updateProgressBar(id) {
     const progressBar = document.querySelector(`.${id}-progress`);
     if (progressBar) {
         const progressPercentage = Math.min((clickCounts[id] / 10) * 100, 100);
-        progressBar.style.background = `linear-gradient(orange 0 0) 0/${progressPercentage}% no-repeat var(--secondary-color)`;
+        progressBar.style.background = `linear-gradient(var(--primary-color) 0 0) 0/${progressPercentage}% no-repeat var(--secondary-color)`;
     }
 }
 

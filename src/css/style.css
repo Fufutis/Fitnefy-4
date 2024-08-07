@@ -73,11 +73,19 @@ li {
   padding-left: 1%;
 }
 
+.stats{
+  color: aliceblue;
+  font-size: 2.1vh;
+  text-align:end;
+  margin-top: 1.25%;
+}
+
 .reps {
   font-size: 2.1vh;
   text-align: center;
-  margin-top: 4%;
+  margin-top: 3%;
   color: var(--primary-color);
+  mix-blend-mode: difference;
 }
 
 .progress {
@@ -85,7 +93,8 @@ li {
   border: 2px solid;
   position: relative;
   background-color: var(--secondary-color); /* Background color when no progress */
-  background: linear-gradient(orange 0 0) 0% no-repeat var(--secondary-color);
+  background: linear-gradient(var(--secondary-color) 0 0) 0% no-repeat var(--secondary-color);
+  /*To change color for the gradiant go to script.js and search for  progressBar.style.background*/
 }
 
 .descinfo {
