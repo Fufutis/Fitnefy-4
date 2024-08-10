@@ -73,6 +73,10 @@ li {
   padding-left: 1%;
 }
 
+.additional-text{
+ text-align: right;
+ margin-top: -1.5%; 
+}
 .stats{
   color: aliceblue;
   font-size: 2.1vh;
