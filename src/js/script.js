@@ -80,7 +80,7 @@ function saveStats() {
  */
 function moveadd(stat) {
   // If the current stat + 10 exceeds our limit of 100, set it to 100
-  stats[stat] = Math.min(stats[stat] + 10, 100);
+  stats[stat] = Math.min(stats[stat] + 1, 100);
   // Update the background fill
   updateBarForStat(stat);
   // Save the updated stats to localStorage
@@ -365,9 +365,9 @@ document.addEventListener('DOMContentLoaded', () => {
               counters[attribute] += plusCount;
   
               // Check if the attribute points exceed 100
-              if (counters[attribute] >= 100) {
+              if (counters[attribute] >= 10) {
                 // Determine how many 100-point increments have been completed
-                const increments = Math.floor(counters[attribute] / 100);
+                const increments = Math.floor(counters[attribute] / 10);
   
                 // Update the corresponding stat bar for each complete increment
                 for (let i = 0; i < increments; i++) {
@@ -375,7 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
   
                 // Subtract the full increments from the attribute points
-                counters[attribute] %= 100;
+                counters[attribute] %= 10;
               }
   
               // Save the updated counter value to localStorage
