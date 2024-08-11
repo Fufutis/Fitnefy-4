@@ -305,6 +305,26 @@ function displaySavedInformation() {
         'leg-press', 'barbell-rows', 'lunges'
     ];
 
+    // Retrieve and parse the saved stats from localStorage
+    const stats = JSON.parse(localStorage.getItem('stats')) || {
+        strength: 0,
+        dexterity: 0,
+        intelligence: 0,
+        perception: 0,
+        endurance: 0,
+        luck: 0
+    };
+// Initialize the attribute counters
+const attributes = ['Strength', 'Dexterity', 'Intelligence', 'Perception', 'Endurance', 'Luck'];
+const counters = {};
+
+// Retrieve counters for each attribute from localStorage
+attributes.forEach(attribute => {
+    counters[attribute] = parseInt(localStorage.getItem(`${attribute.toLowerCase()}Counter`)) || 0;
+    console.log(`Initial ${attribute} Points:`, counters[attribute]);
+});
+
+    // Iterate over each workout ID to display saved data
     workoutIds.forEach(id => {
         const savedData = localStorage.getItem(`workout-${id}`);
         const savedClickCount = localStorage.getItem(`clickCount-${id}`);
@@ -313,15 +333,26 @@ function displaySavedInformation() {
             console.log(`Progress for ${id}: ${savedData}`);
             console.log(`Click count for ${id}: ${savedClickCount}`);
 
-            // Optionally display this information on your webpage
             const displayElement = document.getElementById(`${id}-display`);
             if (displayElement) {
                 displayElement.innerText = `Saved Progress: ${savedData} (Click Count: ${savedClickCount})`;
             }
         }
     });
-}
 
+    // Display stats information
+    const statsDisplayElement = document.getElementById('stats-display');
+    if (statsDisplayElement) {
+        statsDisplayElement.innerHTML = `<p>
+            Strength: ${stats.strength}/100   Strength Points: ${counters.Strength}<br>
+            Dexterity: ${stats.dexterity} 100   Dexterity Points: ${counters.Dexterity}<br>
+            Intelligence: ${stats.intelligence}/100   Intelligence Points: ${counters.Intelligence}<br>
+            Perception: ${stats.perception}/100 Perception Points: ${counters.Perception}<br>
+            Endurance: ${stats.endurance}/100 Endurance Points: ${counters.Endurance}<br>
+            Luck: ${stats.luck}/100 Luck Points: ${counters.Luck}</p>
+        `;
+    }
+}
 // Call this function to log the saved information to the console
 displaySavedInformation();
 //------------------------------------Point Allocation-------------------------------------------------------
