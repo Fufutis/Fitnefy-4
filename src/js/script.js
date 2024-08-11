@@ -306,13 +306,17 @@ function displaySavedInformation() {
 displaySavedInformation();
 //------------------------------------Point Allocation-------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize counter from localStorage or start from zero
-    let strengthCounter = parseInt(localStorage.getItem('strengthCounter')) || 0;
+    // Initialize counters from localStorage or start from zero
+    const attributes = ['Strength', 'Dexterity', 'Intelligence', 'Perception', 'Endurance', 'Luck'];
+    const counters = {};
 
-    // Log the initial counter value to the console
-    console.log('Initial Strength Points:', strengthCounter);
+    // Initialize counters for each attribute
+    attributes.forEach(attribute => {
+        counters[attribute] = parseInt(localStorage.getItem(`${attribute.toLowerCase()}Counter`)) || 0;
+        console.log(`Initial ${attribute} Points:`, counters[attribute]);
+    });
 
-    // Function to update reps and increment strength points
+    // Function to update reps and increment attribute points
     function updateReps(exerciseId) {
         // Select the list item (li) that contains the reps information
         const repsElement = document.getElementById(exerciseId);
@@ -326,19 +330,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Get the text inside the element
                 const additionalText = additionalTextElement.textContent;
 
-                // Check for "Strength" and count the number of pluses
-                if (additionalText.includes('Strength')) {
-                    const plusCount = (additionalText.match(/\+/g) || []).length;
+                // Check for each attribute and count the number of pluses
+                attributes.forEach(attribute => {
+                    if (additionalText.includes(attribute)) {
+                        const plusCount = (additionalText.match(/\+/g) || []).length;
 
-                    // Increment the counter by the number of pluses
-                    strengthCounter += plusCount;
+                        // Increment the counter by the number of pluses
+                        counters[attribute] += plusCount;
 
-                    // Save the updated counter value to localStorage
-                    localStorage.setItem('strengthCounter', strengthCounter);
+                        // Save the updated counter value to localStorage
+                        localStorage.setItem(`${attribute.toLowerCase()}Counter`, counters[attribute]);
 
-                    // Log the updated counter value to the console
-                    console.log(`Updated Strength Points for ${exerciseId}:`, strengthCounter);
-                }
+                        // Log the updated counter value to the console
+                        console.log(`Updated ${attribute} Points for ${exerciseId}:`, counters[attribute]);
+                    }
+                });
             } else {
                 console.error('Element with class "additional-text" not found for exercise:', exerciseId);
             }
