@@ -62,7 +62,9 @@ Object.keys(stats).forEach(updateBarForStat);
  */
 function updateBarForStat(stat) {
   const elem = document.getElementById(stat);
-  elem.style.background = `linear-gradient(orange 0 0) 0/${stats[stat]}% no-repeat rgb(35, 35, 43)`;
+  if (elem) {
+    elem.style.background = `linear-gradient(orange 0 0) 0/${stats[stat]}% no-repeat rgb(35, 35, 43)`;
+  }
 }
 
 /**
@@ -323,76 +325,91 @@ function displaySavedInformation() {
 // Call this function to log the saved information to the console
 displaySavedInformation();
 //------------------------------------Point Allocation-------------------------------------------------------
+// Listen for DOMContentLoaded event
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize counters from localStorage or start from zero
     const attributes = ['Strength', 'Dexterity', 'Intelligence', 'Perception', 'Endurance', 'Luck'];
     const counters = {};
-
+  
     // Initialize counters for each attribute
     attributes.forEach(attribute => {
-        counters[attribute] = parseInt(localStorage.getItem(`${attribute.toLowerCase()}Counter`)) || 0;
-        console.log(`Initial ${attribute} Points:`, counters[attribute]);
+      counters[attribute] = parseInt(localStorage.getItem(`${attribute.toLowerCase()}Counter`)) || 0;
+      console.log(`Initial ${attribute} Points:`, counters[attribute]);
     });
-
+  
     // Function to update reps and increment attribute points
     function updateReps(exerciseId) {
-        // Select the list item (li) that contains the reps information
-        const repsElement = document.getElementById(exerciseId);
-
-        if (repsElement) {
-            // Find the parent list item (li) and select the previous element with class 'additional-text'
-            const additionalTextElement = repsElement.closest('li').previousElementSibling.querySelector('.additional-text');
-
-            // Check if the additional text element exists
-            if (additionalTextElement) {
-                // Get the text inside the element
-                const additionalText = additionalTextElement.textContent;
-
-                // Check for each attribute and count the number of pluses for each
-                attributes.forEach(attribute => {
-                    // Create a regular expression to find the specific attribute and count its pluses
-                    const regex = new RegExp(`${attribute}\\++`, 'g');
-                    const match = additionalText.match(regex);
-
-                    if (match) {
-                        // Count the pluses in the matched attribute segment
-                        const plusCount = match[0].length - attribute.length;
-
-                        // Increment the counter by the number of pluses
-                        counters[attribute] += plusCount;
-
-                        // Save the updated counter value to localStorage
-                        localStorage.setItem(`${attribute.toLowerCase()}Counter`, counters[attribute]);
-
-                        // Log the updated counter value to the console
-                        console.log(`Updated ${attribute} Points for ${exerciseId}:`, counters[attribute]);
-                    }
-                });
-            } else {
-                console.error('Element with class "additional-text" not found for exercise:', exerciseId);
+      // Select the list item (li) that contains the reps information
+      const repsElement = document.getElementById(exerciseId);
+  
+      if (repsElement) {
+        // Find the parent list item (li) and select the previous element with class 'additional-text'
+        const additionalTextElement = repsElement.closest('li').previousElementSibling.querySelector('.additional-text');
+  
+        // Check if the additional text element exists
+        if (additionalTextElement) {
+          // Get the text inside the element
+          const additionalText = additionalTextElement.textContent;
+  
+          // Check for each attribute and count the number of pluses for each
+          attributes.forEach(attribute => {
+            // Create a regular expression to find the specific attribute and count its pluses
+            const regex = new RegExp(`${attribute}\\++`, 'g');
+            const match = additionalText.match(regex);
+  
+            if (match) {
+              // Count the pluses in the matched attribute segment
+              const plusCount = match[0].length - attribute.length;
+  
+              // Increment the counter by the number of pluses
+              counters[attribute] += plusCount;
+  
+              // Check if the attribute points exceed 100
+              if (counters[attribute] >= 100) {
+                // Determine how many 100-point increments have been completed
+                const increments = Math.floor(counters[attribute] / 100);
+  
+                // Update the corresponding stat bar for each complete increment
+                for (let i = 0; i < increments; i++) {
+                  moveadd(attribute.toLowerCase());
+                }
+  
+                // Subtract the full increments from the attribute points
+                counters[attribute] %= 100;
+              }
+  
+              // Save the updated counter value to localStorage
+              localStorage.setItem(`${attribute.toLowerCase()}Counter`, counters[attribute]);
+  
+              // Log the updated counter value to the console
+              console.log(`Updated ${attribute} Points for ${exerciseId}:`, counters[attribute]);
             }
+          });
         } else {
-            console.error('Element with id', exerciseId, 'not found.');
+          console.error('Element with class "additional-text" not found for exercise:', exerciseId);
         }
+      } else {
+        console.error('Element with id', exerciseId, 'not found.');
+      }
     }
-
-    // Attach click event listeners to each "next" button
+  
+    // Attach click event listeners to each "updater" button
     document.querySelectorAll('.updater').forEach((button, index) => {
-        const exerciseIds = [
-            'bench-press',
-            'deadlifts',
-            'squats',
-            'shoulder-press',
-            'bicep-curls',
-            'tricep-dips',
-            'pull-ups',
-            'pull-upsW',
-            'leg-press',
-            'barbell-rows',
-            'lunges'
-        ];
-        if (exerciseIds[index]) {
-            button.addEventListener('click', () => updateReps(exerciseIds[index]));
-        }
+      const exerciseIds = [
+        'bench-press',
+        'deadlifts',
+        'squats',
+        'shoulder-press',
+        'bicep-curls',
+        'tricep-dips',
+        'pull-ups',
+        'pull-upsW',
+        'leg-press',
+        'barbell-rows',
+        'lunges'
+      ];
+      if (exerciseIds[index]) {
+        button.addEventListener('click', () => updateReps(exerciseIds[index]));
+      }
     });
-});
+  });
