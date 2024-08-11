@@ -304,3 +304,66 @@ function displaySavedInformation() {
 
 // Call this function to log the saved information to the console
 displaySavedInformation();
+//------------------------------------Point Allocation-------------------------------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize counter from localStorage or start from zero
+    let strengthCounter = parseInt(localStorage.getItem('strengthCounter')) || 0;
+
+    // Log the initial counter value to the console
+    console.log('Initial Strength Points:', strengthCounter);
+
+    // Function to update reps and increment strength points
+    function updateReps(exerciseId) {
+        // Select the list item (li) that contains the reps information
+        const repsElement = document.getElementById(exerciseId);
+
+        if (repsElement) {
+            // Find the parent list item (li) and select the previous element with class 'additional-text'
+            const additionalTextElement = repsElement.closest('li').previousElementSibling.querySelector('.additional-text');
+
+            // Check if the additional text element exists
+            if (additionalTextElement) {
+                // Get the text inside the element
+                const additionalText = additionalTextElement.textContent;
+
+                // Check for "Strength" and count the number of pluses
+                if (additionalText.includes('Strength')) {
+                    const plusCount = (additionalText.match(/\+/g) || []).length;
+
+                    // Increment the counter by the number of pluses
+                    strengthCounter += plusCount;
+
+                    // Save the updated counter value to localStorage
+                    localStorage.setItem('strengthCounter', strengthCounter);
+
+                    // Log the updated counter value to the console
+                    console.log(`Updated Strength Points for ${exerciseId}:`, strengthCounter);
+                }
+            } else {
+                console.error('Element with class "additional-text" not found for exercise:', exerciseId);
+            }
+        } else {
+            console.error('Element with id', exerciseId, 'not found.');
+        }
+    }
+
+    // Attach click event listeners to each "next" button
+    document.querySelectorAll('.updater').forEach((button, index) => {
+        const exerciseIds = [
+            'bench-press',
+            'deadlifts',
+            'squats',
+            'shoulder-press',
+            'bicep-curls',
+            'tricep-dips',
+            'pull-ups',
+            'pull-upsW',
+            'leg-press',
+            'barbell-rows',
+            'lunges'
+        ];
+        if (exerciseIds[index]) {
+            button.addEventListener('click', () => updateReps(exerciseIds[index]));
+        }
+    });
+});
