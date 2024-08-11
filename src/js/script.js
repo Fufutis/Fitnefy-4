@@ -330,10 +330,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Get the text inside the element
                 const additionalText = additionalTextElement.textContent;
 
-                // Check for each attribute and count the number of pluses
+                // Check for each attribute and count the number of pluses for each
                 attributes.forEach(attribute => {
-                    if (additionalText.includes(attribute)) {
-                        const plusCount = (additionalText.match(/\+/g) || []).length;
+                    // Create a regular expression to find the specific attribute and count its pluses
+                    const regex = new RegExp(`${attribute}\\++`, 'g');
+                    const match = additionalText.match(regex);
+
+                    if (match) {
+                        // Count the pluses in the matched attribute segment
+                        const plusCount = match[0].length - attribute.length;
 
                         // Increment the counter by the number of pluses
                         counters[attribute] += plusCount;
