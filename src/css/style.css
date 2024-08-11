@@ -175,7 +175,7 @@ a:active {
 
 body {
   margin: 0;
-  background-color:  gray;   /* rgb(28, 28, 32);*/
+  background-color:  rgb(28, 28, 32);  /* rgb(28, 28, 32);*/
 }
 /* make the sidebar come out smoothly */
 body::-webkit-scrollbar {

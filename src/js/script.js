@@ -40,15 +40,21 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("Page loaded. Current level is:", level); // Log for debugging
 });
 //--------------------------------------STAT-BAR FILLER(+ -)----------------------------------------------------
+// Initialize constants and stats
 const INITIAL_FILL = 0; // Initial fill percentage
-let stats = {
+
+// Retrieve saved stats from localStorage or initialize them if not available
+let stats = JSON.parse(localStorage.getItem('stats')) || {
   strength: INITIAL_FILL,
   dexterity: INITIAL_FILL,
   intelligence: INITIAL_FILL,
   perception: INITIAL_FILL,
   endurance: INITIAL_FILL,
   luck: INITIAL_FILL
-}
+};
+
+// Update the stat bars to reflect the saved stats on page load
+Object.keys(stats).forEach(updateBarForStat);
 
 /**
  * Updates the background of an element with a linear gradient based on the given stat percentage.
@@ -60,14 +66,23 @@ function updateBarForStat(stat) {
 }
 
 /**
+ * Saves the current stats to localStorage.
+ */
+function saveStats() {
+  localStorage.setItem('stats', JSON.stringify(stats));
+}
+
+/**
  * Increases the fill of a progress bar by 10% and updates its background fill.
  * @param {string} stat - The stat to be increased.
  */
 function moveadd(stat) {
   // If the current stat + 10 exceeds our limit of 100, set it to 100
   stats[stat] = Math.min(stats[stat] + 10, 100);
-  // Update the background fill using the data-filled attribute
+  // Update the background fill
   updateBarForStat(stat);
+  // Save the updated stats to localStorage
+  saveStats();
 }
 
 /**
@@ -77,7 +92,10 @@ function moveadd(stat) {
 function movesub(stat) {
   stats[stat] = Math.max(stats[stat] - 10, 0);
   updateBarForStat(stat);
+  // Save the updated stats to localStorage
+  saveStats();
 }
+
 //--------------------------------------USERNAME DISPLAY-----------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
   // Check if the #intro element exists on the page
