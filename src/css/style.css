@@ -198,20 +198,21 @@ body {
 }
 
 
-.content::-webkit-scrollbar {
-  width:1px;
-
+.content::-webkit-scrollbar {  /*the scroll bar wasnt dissapearing so i just manually removed it */
+  width:0px;
 }
 
-.content::-webkit-scrollbar-track {
-  background: rgb(28, 28, 32);
-}
 
-.content::-webkit-scrollbar-thumb {
-  background-color: var(--primary-color);
-  border-radius: 4px;
+.custom-scrollbar {
+  position: fixed;
+  right: 10px; /* Adjust as necessary */
+  width: 0.2em;
+  background: var(--primary-color);
+  border-radius: 100vw;
+  opacity: 0;
+  transition: opacity 0.3s, top 0.1s; /* Fade in/out transition and smooth scrolling */
+  z-index: 10;
 }
-
 .sidebar {
   box-sizing: border-box;
   position: absolute; /* Change from fixed to absolute */
