@@ -1,42 +1,46 @@
 //--------------------------------------LEVEL COUNTER---------------------------------------------------------
-// Initialize level from localStorage or set to 0 if not present
-var level = parseInt(localStorage.getItem('level')) || 0;
-var timeoutId; 
+let level = parseInt(localStorage.getItem('level')) || 0;
+let timeoutId;
+
+// Function to update the counter display
+function updateCounterDisplay() {
+    document.getElementById("counter").innerHTML = level;
+}
 // Function to increment level and save it to localStorage
 function increment() {
     level++;
     localStorage.setItem('level', level); // Persist level state across pages
-    document.getElementById("counter").innerHTML = level; // Update counter display
+    updateCounterDisplay(); // Update counter display
     console.log("Level incremented to:", level); // Log for debugging
 }
 
 // Function to change text based on level and set a timeout to reset text
-function changeText(elementId) {
-    var paragraph = document.getElementById("levelText"); // Get the paragraph element
+function changeText() {
+    const paragraph = document.getElementById("levelText"); // Get the paragraph element
     if (paragraph) { // Check if paragraph exists
-        paragraph.innerHTML = "You are now level " + (level+1) + " continue improving";
+        paragraph.innerHTML = "You are now level " + (level + 1) + " continue improving";
         resetTimer(); // Reset the timer to change text back after delay
     }
 }
 
 // Function to reset text after a specified timeout
-function resetTimer(elementId) {
-    var paragraph = document.getElementById("levelText"); // Re-acquire the paragraph element
+function resetTimer() {
+    const paragraph = document.getElementById("levelText"); // Re-acquire the paragraph element
 
     // Clear any existing timeout to prevent duplicates
     clearTimeout(timeoutId);
 
     // Set a new timeout to revert the text after 3000 milliseconds (3 seconds)
-    timeoutId = setTimeout(function() {
+    timeoutId = setTimeout(function () {
         if (paragraph) { // Check if paragraph still exists
             paragraph.innerHTML = "What are you going to do next?";
         }
     }, 3000);
- 
 }
+
 // Initialize the counter display when the page loads
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById("counter").innerHTML = level; // Set counter display
+document.addEventListener('DOMContentLoaded', function () {
+    updateCounterDisplay(); // Set counter display
     console.log("Page loaded. Current level is:", level); // Log for debugging
 });
 //--------------------------------------STAT-BAR FILLER(+ -)----------------------------------------------------
@@ -314,15 +318,16 @@ function displaySavedInformation() {
         endurance: 0,
         luck: 0
     };
-// Initialize the attribute counters
-const attributes = ['Strength', 'Dexterity', 'Intelligence', 'Perception', 'Endurance', 'Luck'];
-const counters = {};
 
-// Retrieve counters for each attribute from localStorage
-attributes.forEach(attribute => {
-    counters[attribute] = parseInt(localStorage.getItem(`${attribute.toLowerCase()}Counter`)) || 0;
-    console.log(`Initial ${attribute} Points:`, counters[attribute]);
-});
+    // Initialize the attribute counters
+    const attributes = ['Strength', 'Dexterity', 'Intelligence', 'Perception', 'Endurance', 'Luck'];
+    const counters = {};
+
+    // Retrieve counters for each attribute from localStorage
+    attributes.forEach(attribute => {
+        counters[attribute] = parseInt(localStorage.getItem(`${attribute.toLowerCase()}Counter`)) || 0;
+        console.log(`Initial ${attribute} Points:`, counters[attribute]);
+    });
 
     // Iterate over each workout ID to display saved data
     workoutIds.forEach(id => {
@@ -340,21 +345,22 @@ attributes.forEach(attribute => {
         }
     });
 
-    // Display stats information
+    // Display stats and counters information
     const statsDisplayElement = document.getElementById('stats-display');
     if (statsDisplayElement) {
         statsDisplayElement.innerHTML = `<p>
-            Strength: ${stats.strength}/100   Strength Points: ${counters.Strength}<br>
-            Dexterity: ${stats.dexterity} 100   Dexterity Points: ${counters.Dexterity}<br>
-            Intelligence: ${stats.intelligence}/100   Intelligence Points: ${counters.Intelligence}<br>
-            Perception: ${stats.perception}/100 Perception Points: ${counters.Perception}<br>
-            Endurance: ${stats.endurance}/100 Endurance Points: ${counters.Endurance}<br>
-            Luck: ${stats.luck}/100 Luck Points: ${counters.Luck}</p>
+            Strength: ${stats.strength}/100---Strength Points: ${counters.Strength}<br>
+            Dexterity: ${stats.dexterity}/100---Dexterity Points: ${counters.Dexterity}<br>
+            Intelligence: ${stats.intelligence}/100---Intelligence Points: ${counters.Intelligence}<br>
+            Perception: ${stats.perception}/100---Perception Points: ${counters.Perception}<br>
+            Endurance: ${stats.endurance}/100---Endurance Points: ${counters.Endurance}<br>
+            Luck: ${stats.luck}/100---Luck Points: ${counters.Luck}</p>
         `;
     }
 }
+
 // Call this function to log the saved information to the console
-displaySavedInformation();
+displaySavedInformation(); 
 //------------------------------------Point Allocation-------------------------------------------------------
 // Listen for DOMContentLoaded event
 document.addEventListener('DOMContentLoaded', () => {

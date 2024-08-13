@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
     <div class="sidebar">
         <button class="logo" onclick="changeText(),increment()"><a href="Main.html">Fitnefy</a></button>
         <h1 class="level"><span class="font">Level</span></h1>
@@ -20,54 +21,56 @@
         <button class="blockbtn"><a href="Notes.html">Notes</a></button>
         <button id="settings">Settings</button>
     </div>
+
     <div class="content">
-        <h1 id="intro" class="level">Hello,</h1>
-        <p id="levelText">Any improvements for today?</p>
-        <div>
-            <div class="grid">
-                <div class="item" onclick="navigateToPage('Stats/Strength.html')">
-                    Strength
-                    <div id='strength' class="progress-1"></div>
+        <div class="scrollable-content">
+            <h1 id="intro" class="level">Hello,</h1>
+            <p id="levelText">Any improvements for today?</p>
+            <div>
+                <div class="grid">
+                    <div class="item" onclick="navigateToPage('Stats/Strength.html')">
+                        Strength
+                        <div id='strength' class="progress-1"></div>
 
-                </div>
-                <div class="item" onclick="navigateToPage('Stats/Dexterity.html')">
-                    Dexterity
-                    <div id="dexterity" class="progress-1"></div>
+                    </div>
+                    <div class="item" onclick="navigateToPage('Stats/Dexterity.html')">
+                        Dexterity
+                        <div id="dexterity" class="progress-1"></div>
 
-                </div>
-                <div class="item" onclick="navigateToPage('Stats/Intelligence.html')">
-                    Intelligence
-                    <div id="intelligence" class="progress-1"></div>
+                    </div>
+                    <div class="item" onclick="navigateToPage('Stats/Intelligence.html')">
+                        Intelligence
+                        <div id="intelligence" class="progress-1"></div>
 
-                </div>
-                <div class="item" onclick="navigateToPage('Stats/Perception.html')">
-                    Perception
-                    <div id="perception" class="progress-1"></div>
+                    </div>
+                    <div class="item" onclick="navigateToPage('Stats/Perception.html')">
+                        Perception
+                        <div id="perception" class="progress-1"></div>
 
-                </div>
-                <div class="item" onclick="navigateToPage('Stats/Endurance.html')">
-                    Endurance
-                    <div id="endurance" class="progress-1"></div>
-                </div>
-                <div class="item" onclick="navigateToPage('Stats/Luck.html')">
-                    Luck
-                    <div id="luck" class="progress-1"></div>
+                    </div>
+                    <div class="item" onclick="navigateToPage('Stats/Endurance.html')">
+                        Endurance
+                        <div id="endurance" class="progress-1"></div>
+                    </div>
+                    <div class="item" onclick="navigateToPage('Stats/Luck.html')">
+                        Luck
+                        <div id="luck" class="progress-1"></div>
 
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="wrapper">
-            <div class="items item1"></div>
-            <div class="items item2"></div>
-            <div class="items item3"></div>
-            <div class="items item4"></div>
-            <div class="items item5"></div>
-            <div class="items item6"></div>
-            <div class="items item7"></div>
-            <div class="items item8"></div>
+            <div class="wrapper">
+                <div class="items item1"></div>
+                <div class="items item2"></div>
+                <div class="items item3"></div>
+                <div class="items item4"></div>
+                <div class="items item5"></div>
+                <div class="items item6"></div>
+                <div class="items item7"></div>
+                <div class="items item8"></div>
+            </div>
         </div>
     </div>
-
     <script src="../js/script.js"></script>
     <script>
         function navigateToPage(page) {
