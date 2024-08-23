@@ -34,6 +34,7 @@ p {
   flex-wrap: wrap;
   gap: 15px; /* Space between items */
   list-style: none; /* Remove default list styling */
+  margin-right: 2%;
 }
 
 .workouts li {
@@ -66,7 +67,52 @@ li {
   line-height: 1; /* Adjusted line height for better readability */
 }
 
-
+.edit {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  width: 2%;
+  padding-top: 0.3%;
+  padding-right: 2.8%;
+  padding-left:  1%;
+  padding-bottom: 0.3%;
+  border-radius: 2px;
+  font-weight: bold;
+  display: inline-block; /* Make the element inline-block (left to right) */ 
+  position: absolute;
+  right: 14%; /* Position elements to the right */
+}
+.add {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  width: 2%;
+  padding-top: 0.3%;
+  padding-right: 2.8%;
+  padding-left:  1%;
+  padding-bottom: 0.3%;
+  border-radius: 2px;
+  font-weight: bold;
+  display: inline-block; /* Make the element inline-block (left to right) */ 
+  position: absolute;
+  right: 9.2%; /* Position elements to the right */
+}
+.edit:hover {
+  background-color:rgb(156, 116, 4); 
+}
+.add {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  width: 2%;
+  padding-top: 0.3%;
+  padding-right: 2.8%;
+  padding-left:  1%;
+  padding-bottom: 0.3%;
+  border-radius: 2px;
+  font-weight: bold;
+  display: inline-block; /* Make the element inline-block (left to right) */ 
+}
+.add:hover {
+  background-color:rgb(156, 116, 4); 
+}
 .description {
   color: aliceblue;
   margin-top: 1.25%;
