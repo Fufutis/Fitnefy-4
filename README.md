@@ -8,3 +8,5 @@ current idea is to make it a litle more competitive 1 add leader boards through 
 (future note for self. each workout increases the stat it would aslo be nice to do muscle groups aswell could be adjusted by settings)
 
 {This should act as a save file for the future i rly like the buttons since they were the first thingy that i was very proud of in coding also not ignoring the sliding navbar.EITHER WAY IF U LEVEL UP THE + BUTTON COULD APPEAR TO PROGRESS AND if u want to downgrade it would prolly track your progress? like linked lists?}
+
+THE search bar should work like (description contains the word chest (Targets the chest, shoulders, and tricep) or Title)
