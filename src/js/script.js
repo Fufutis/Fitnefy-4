@@ -478,9 +478,10 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => updateReps(exerciseIds[index]));
       }
     });
-  });
-  //------------------------------------Search-Bar---------------------------------------------------------
-  const searchInput = document.querySelector('.search-input'); // Target the input with the class 'search-input'
+});
+
+//------------------------------------Search-Bar---------------------------------------------------------
+const searchInput = document.querySelector('.search-input'); // Target the input with the class 'search-input'
 const workoutItems = document.querySelectorAll('.workouts > li'); // Target all direct <li> elements within the .workouts class
 
 searchInput.addEventListener('input', () => {
