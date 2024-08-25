@@ -478,4 +478,36 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => updateReps(exerciseIds[index]));
       }
     });
+});
+
+//------------------------------------Search-Bar---------------------------------------------------------
+const searchInput = document.querySelector('.search-input'); // Target the input with the class 'search-input'
+const workoutItems = document.querySelectorAll('.workouts > li'); // Target all direct <li> elements within the .workouts class
+
+searchInput.addEventListener('input', () => {
+  const searchTerm = searchInput.value.toLowerCase();
+  
+  workoutItems.forEach((item, index) => {
+    // Only target the main workout items (those with a <strong> tag)
+    const strongTag = item.querySelector('strong');
+    const descriptionTag = item.querySelector('.description');
+    
+    if (strongTag) {
+      const nameText = strongTag.textContent.toLowerCase();
+      const descriptionText = descriptionTag ? descriptionTag.textContent.toLowerCase() : '';
+
+      // Check if the workout name or description matches the search term
+      if (nameText.includes(searchTerm) || descriptionText.includes(searchTerm)) {
+        // Show this workout item and the next two related items (progress and updater)
+        item.style.display = '';
+        if (workoutItems[index + 1]) workoutItems[index + 1].style.display = ''; // Progress <li>
+        if (workoutItems[index + 2]) workoutItems[index + 2].style.display = ''; // Updater <li>
+      } else {
+        // Hide this workout item and the next two related items (progress and updater)
+        item.style.display = 'none';
+        if (workoutItems[index + 1]) workoutItems[index + 1].style.display = 'none'; // Progress <li>
+        if (workoutItems[index + 2]) workoutItems[index + 2].style.display = 'none'; // Updater <li>
+      }
+    }
   });
+});
