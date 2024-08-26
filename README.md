@@ -9,4 +9,5 @@ current idea is to make it a litle more competitive 1 add leader boards through 
 
 {This should act as a save file for the future i rly like the buttons since they were the first thingy that i was very proud of in coding also not ignoring the sliding navbar.EITHER WAY IF U LEVEL UP THE + BUTTON COULD APPEAR TO PROGRESS AND if u want to downgrade it would prolly track your progress? like linked lists?}
 
-THE search bar should work like (description contains the word chest (Targets the chest, shoulders, and tricep) or Title)
+tried to do so u can add the buttons your self but its so weird ngl i fix an issue another one appears some memory is weird 
+then it worked but i wanted to rename it to rename it it needed something else it would need a whole ass revamp so id leave it to last dont even bother until its finished
